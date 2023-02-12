@@ -1,4 +1,7 @@
+import About from "./Buttons/About";
+import Contact from "./Buttons/Contact";
 import Home from "./Buttons/Home";
+import Projects from "./Buttons/Projects";
 import styles from "./Header.module.css";
 
 export default function Header() {
@@ -6,9 +9,10 @@ export default function Header() {
     <>
       <div>
         <ul className={styles.header}>
-        <Home />
-        <Home />
-        <Home />
+          <Home />
+          <Projects />
+          <About />
+          <Contact />
         </ul>
       </div>
     </>
