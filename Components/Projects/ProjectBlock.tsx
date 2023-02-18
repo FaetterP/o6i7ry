@@ -7,7 +7,7 @@ type PropsType = {
   type: string;
 };
 
-export default function ProjectBlock(props: PropsType) {
+export default function Component(props: PropsType) {
   return (
     <>
       <div className={styles.projectPreview}>

@@ -1,11 +1,9 @@
-import ProjectBlock from "Components/Projects/ProjectBlock";
+import Projects from "Components/Projects/Projects";
 
-export default function Projects() {
+export default function Component() {
   return (
     <>
-      <div>
-        <ProjectBlock title="title" type="type" src="/nuggetDiamond.png" />
-      </div>
+      <Projects />
     </>
   );
 }
