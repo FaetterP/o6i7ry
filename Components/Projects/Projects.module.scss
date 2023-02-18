@@ -3,6 +3,14 @@
   grid-template-columns: repeat(6, 180px);
   justify-content: space-between;
 
+  @media (max-width: 1180px) {
+    grid-template-columns: repeat(4, 180px);
+  }
+
+  @media (max-width: 800px) {
+    grid-template-columns: repeat(2, 180px);
+  }
+
   row-gap: 42px;
   margin: 100px 100px;
 }
