@@ -2,7 +2,7 @@ import About from "./Buttons/About";
 import Contact from "./Buttons/Contact";
 import Home from "./Buttons/Home";
 import Projects from "./Buttons/Projects";
-import styles from "./Header.module.css";
+import styles from "./Header.module.scss";
 
 export default function Header() {
   return (
