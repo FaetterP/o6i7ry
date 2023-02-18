@@ -1,0 +1,35 @@
+.projectPreview {
+  color: #cbc9cf;
+
+  h2 {
+    display: flex;
+
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  img {
+    width: 180px;
+    height: 180px;
+    left: 370px;
+    top: 206px;
+
+    background: #302f31;
+    border-radius: 9px;
+
+    image-rendering: pixelated;
+  }
+}
+
+.projectPreview:hover {
+  h2 {
+    color: white;
+  }
+
+  img {
+    background: #525154;
+  }
+}
