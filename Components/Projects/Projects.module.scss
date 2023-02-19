@@ -1,16 +1,20 @@
 .projects {
+  row-gap: 42px;
+  margin: 100px min(100px, 5%);
+
   display: grid;
   grid-template-columns: repeat(6, 180px);
   justify-content: space-between;
 
   @media (max-width: 1180px) {
     grid-template-columns: repeat(4, 180px);
+    justify-content: space-around;
+    margin: 100px 0;
   }
 
   @media (max-width: 800px) {
     grid-template-columns: repeat(2, 180px);
+    justify-content: space-evenly;
+    margin: 100px 0;
   }
-
-  row-gap: 42px;
-  margin: 100px 100px;
 }
