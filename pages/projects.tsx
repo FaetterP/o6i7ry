@@ -1,6 +1,6 @@
 import Projects from "Components/Projects/Projects";
 
-export default function Component() {
+export default function ProjectsPage() {
   return (
     <>
       <Projects />

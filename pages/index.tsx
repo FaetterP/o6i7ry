@@ -1,4 +1,4 @@
-export default function Component(){
+export default function MainPage(){
     return(
         <div>Hello</div>
     )

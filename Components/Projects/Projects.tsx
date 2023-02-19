@@ -1,7 +1,7 @@
 import ProjectBlock from "./ProjectBlock";
 import styles from "./Projects.module.scss";
 
-export default function Component() {
+export default function Projects() {
   return (
     <>
       <div className={styles.projects}>

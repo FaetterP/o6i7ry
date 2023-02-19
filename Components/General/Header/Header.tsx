@@ -1,7 +1,4 @@
-import About from "./Buttons/About";
-import Contact from "./Buttons/Contact";
-import Home from "./Buttons/Home";
-import Projects from "./Buttons/Projects";
+import HeaderNavButton from "./Button";
 import styles from "./Header.module.scss";
 
 export default function Header() {
@@ -9,10 +6,10 @@ export default function Header() {
     <>
       <div>
         <ul className={styles.header}>
-          <Home />
-          <Projects />
-          <About />
-          <Contact />
+          <HeaderNavButton title="Home" link="/" />
+          <HeaderNavButton title="Projects" link="/projects" />
+          <HeaderNavButton title="About" link="/about" />
+          <HeaderNavButton title="Contact" link="/contact" />
         </ul>
       </div>
     </>
