@@ -4,8 +4,12 @@ import PathDisplay from "./PathDisplay";
 type PropsType = {
   path: string[];
 
-  files?: { name: string; isFolder: boolean }[];
-  filesOriginal?: { name: string; isFolder: boolean }[];
+  files?: { name: string; isFolder: boolean; isCanTransition: boolean }[];
+  filesOriginal?: {
+    name: string;
+    isFolder: boolean;
+    isCanTransition: boolean;
+  }[];
 
   texture16?: string;
   texture32?: string;
@@ -21,7 +25,7 @@ export default function Files(props: PropsType) {
         <PathDisplay pathPieces={props.path} />
         <div style={{ display: "flex" }}>
           <FilesDisplay files={props.files!} />
-          <FilesDisplay files={props.files!} />
+          <FilesDisplay files={props.filesOriginal!} />
         </div>
       </div>
     </>

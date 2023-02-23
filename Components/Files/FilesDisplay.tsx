@@ -2,13 +2,17 @@ import { useRouter } from "next/router";
 import styles from "./FilesDisplay.module.scss";
 
 type PropsType = {
-  files: { name: string; isFolder: boolean }[];
+  files: { name: string; isFolder: boolean; isCanTransition: boolean }[];
 };
 
 export default function FilesDisplay({ files }: PropsType) {
   const router = useRouter();
 
-  function goToPath(addedPath: string) {
+  function goToPath(addedPath: string, isCanTransition: boolean) {
+    if (!isCanTransition) {
+      return;
+    }
+
     let newPathPieces: string[] = [addedPath];
     const queryPath = router.query.path;
     if (queryPath) {
@@ -29,7 +33,10 @@ export default function FilesDisplay({ files }: PropsType) {
     <>
       <div className={styles.filesBlock}>
         {files.map((item) => (
-          <div key={item.name} onClick={() => goToPath(item.name)}>
+          <div
+            key={item.name}
+            onClick={() => goToPath(item.name, item.isCanTransition)}
+          >
             {item.name}
           </div>
         ))}

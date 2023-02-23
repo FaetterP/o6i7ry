@@ -39,7 +39,7 @@ export function connectToFirebase() {
 }
 
 export async function getFolderContent(
-  resourcepack: ResourcepackName,
+  resourcepack: string,
   branch: BranchName,
   path: string
 ): Promise<contentItemInfo[]> {
