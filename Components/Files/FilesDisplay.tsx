@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import styles from "./FilesDisplay.module.scss";
 
 type PropsType = {
   files: { name: string; isFolder: boolean }[];
@@ -8,7 +9,7 @@ export default function FilesDisplay({ files }: PropsType) {
   const router = useRouter();
 
   function goToPath(addedPath: string) {
-    let newPathPieces: string[] = [];
+    let newPathPieces: string[] = [addedPath];
     const queryPath = router.query.path;
     if (queryPath) {
       if (Array.isArray(queryPath)) {
@@ -26,9 +27,11 @@ export default function FilesDisplay({ files }: PropsType) {
 
   return (
     <>
-      <div>
+      <div className={styles.filesBlock}>
         {files.map((item) => (
-          <div onClick={() => goToPath(item.name)}>{item.name}</div>
+          <div key={item.name} onClick={() => goToPath(item.name)}>
+            {item.name}
+          </div>
         ))}
       </div>
     </>

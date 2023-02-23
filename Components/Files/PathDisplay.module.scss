@@ -1,8 +1,9 @@
 .pathBlock {
-  & h1 {
-    background-color: aqua;
+  h1 {
     margin: 10px;
     padding: 10px;
+
+    background-color: #302f31;
     border-radius: 10px;
 
     font-family: "Noto Sans";
@@ -12,5 +13,9 @@
     line-height: 15px;
 
     color: #cbc9cf;
+  }
+
+  h1:hover {
+    background-color: #444444;
   }
 }

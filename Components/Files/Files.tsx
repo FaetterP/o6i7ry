@@ -19,8 +19,10 @@ export default function Files(props: PropsType) {
     <>
       <div>
         <PathDisplay pathPieces={props.path} />
-        <FilesDisplay files={props.files!}/>
-        <FilesDisplay files={props.files!}/>
+        <div style={{ display: "flex" }}>
+          <FilesDisplay files={props.files!} />
+          <FilesDisplay files={props.files!} />
+        </div>
       </div>
     </>
   );
