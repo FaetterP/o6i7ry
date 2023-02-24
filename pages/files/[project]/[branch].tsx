@@ -39,37 +39,14 @@ export async function getServerSideProps(
   const project = [ctx.query.project].flat()[0] || "OLN";
   const branch = [ctx.query.branch].flat()[0] || "Magic";
 
-  const resOriginal = await getFolderContent(project, `${branch}-orig`, path);
-  const res = await getFolderContent(project, branch, path);
+  const content = await getFolderContent(project, branch, path);
+  const contentOriginal = await getFolderContent(
+    project,
+    `${branch}-orig`,
+    path
+  );
 
-  const filenames = res.map((item) => item.name);
-  const filenamesOriginal = resOriginal.map((item) => item.name);
-
-  const allFiles = Array.from(new Set([...filenames, ...filenamesOriginal]));
-
-  const files: fileInfo[] = [];
-  const filesOriginal: fileInfo[] = [];
-
-  allFiles.forEach((filename) => {
-    if (filenames.includes(filename) && filenamesOriginal.includes(filename)) {
-      files.push({ name: filename, isFolder: true, isCanTransition: true });
-      filesOriginal.push({
-        name: filename,
-        isFolder: true,
-        isCanTransition: true,
-      });
-    } else if (filenames.includes(filename)) {
-      files.push({ name: filename, isFolder: true, isCanTransition: false });
-      filesOriginal.push({ name: "-", isFolder: true, isCanTransition: false });
-    } else if (filenamesOriginal.includes(filename)) {
-      files.push({ name: "-", isFolder: true, isCanTransition: false });
-      filesOriginal.push({
-        name: filename,
-        isFolder: true,
-        isCanTransition: false,
-      });
-    }
-  });
+  const [files, filesOriginal] = solveFiles(content, contentOriginal);
 
   return {
     props: { path: pathPieces, files, filesOriginal },
@@ -86,4 +63,44 @@ function getPathPieces(queryPath: string | string[] | undefined): string[] {
     }
   }
   return pathPieces;
+}
+
+function solveFiles(
+  content: { name: string; isFolder: boolean }[],
+  contentOriginal: { name: string; isFolder: boolean }[]
+) {
+  const filenames = content.map((item) => item.name);
+  const filenamesOriginal = contentOriginal.map((item) => item.name);
+
+  const allFiles = Array.from(new Set([...filenames, ...filenamesOriginal]));
+  allFiles.sort();
+
+  const files: fileInfo[] = [];
+  const filesOriginal: fileInfo[] = [];
+
+  allFiles.forEach((filename) => {
+    const contentItem = content.find((item) => item.name === filename);
+    const contentItemOriginal = contentOriginal.find(
+      (item) => item.name === filename
+    );
+
+    let isCanTransition = false;
+    if (contentItem && contentItemOriginal) {
+      isCanTransition = true;
+    }
+
+    if (contentItem) {
+      files.push({ ...contentItem, isCanTransition });
+    } else {
+      files.push({ name: "-", isFolder: false, isCanTransition });
+    }
+
+    if (contentItemOriginal) {
+      filesOriginal.push({ ...contentItemOriginal, isCanTransition });
+    } else {
+      filesOriginal.push({ name: "-", isFolder: false, isCanTransition });
+    }
+  });
+
+  return [files, filesOriginal];
 }
