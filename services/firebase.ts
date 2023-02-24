@@ -13,17 +13,6 @@ type FirebaseConfig = {
   appId: string;
 };
 
-type BranchName =
-  | "Magic"
-  | "Magic-orig"
-  | "HiTech"
-  | "HiTech-orig"
-  | "TechnoMagic"
-  | "TechnoMagic-orig"
-  | "Other"
-  | "Other-orig";
-type ResourcepackName = "OLN" | "SWN";
-
 type FolderInfo = {
   name: string;
   content: string[];
@@ -40,7 +29,7 @@ export function connectToFirebase() {
 
 export async function getFolderContent(
   resourcepack: string,
-  branch: BranchName,
+  branch: string,
   path: string
 ): Promise<contentItemInfo[]> {
   connectToFirebase();

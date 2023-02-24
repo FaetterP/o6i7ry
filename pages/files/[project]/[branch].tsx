@@ -37,8 +37,10 @@ export async function getServerSideProps(
     pathPieces.length === 0 ? "" : pathPieces.reduce((a, b) => `${a}/${b}`);
 
   const project = [ctx.query.project].flat()[0] || "OLN";
-  const resOriginal = await getFolderContent(project, "Magic-orig", path);
-  const res = await getFolderContent(project, "Magic", path);
+  const branch = [ctx.query.branch].flat()[0] || "Magic";
+
+  const resOriginal = await getFolderContent(project, `${branch}-orig`, path);
+  const res = await getFolderContent(project, branch, path);
 
   const filenames = res.map((item) => item.name);
   const filenamesOriginal = resOriginal.map((item) => item.name);
