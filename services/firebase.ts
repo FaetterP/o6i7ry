@@ -69,7 +69,6 @@ export async function getFolderContent(
   });
 
   await Promise.all(promises);
-  console.log(ret);
   return ret;
 }
 

@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import styles from "./FilesDisplay.module.scss";
+import shortid from "shortid";
 
 type PropsType = {
   files: { name: string; isFolder: boolean; isCanTransition: boolean }[];
@@ -29,12 +30,16 @@ export default function FilesDisplay({ files }: PropsType) {
     });
   }
 
+  function getKey(name: string): string {
+    return name === "-" ? shortid() : name;
+  }
+
   return (
     <>
       <div className={styles.filesBlock}>
         {files.map((item) => (
           <div
-            key={item.name}
+            key={getKey(item.name)}
             onClick={() => goToPath(item.name, item.isCanTransition)}
           >
             {item.name}
