@@ -7,11 +7,27 @@
   width: 50%;
   text-align: center;
 
-  div {
-    color: #cbc9cf;
-  }
-
   div:hover {
     background-color: #6d6c70;
   }
+}
+
+.folder {
+  color: #ffe69a;
+}
+
+.image {
+  color: #f8a988;
+}
+
+.text {
+  color: #d1e1fc;
+}
+
+.notExists {
+  color: #444;
+}
+
+.undefinedType {
+  color: brown;
 }

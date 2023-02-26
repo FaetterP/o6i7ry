@@ -4,10 +4,10 @@ import PathDisplay from "./PathDisplay";
 type PropsType = {
   path: string[];
 
-  files?: { name: string; isFolder: boolean; isCanTransition: boolean }[];
+  files?: { name: string; type: string; isCanTransition: boolean }[];
   filesOriginal?: {
     name: string;
-    isFolder: boolean;
+    type: string;
     isCanTransition: boolean;
   }[];
 

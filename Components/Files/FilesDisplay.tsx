@@ -3,7 +3,7 @@ import styles from "./FilesDisplay.module.scss";
 import shortid from "shortid";
 
 type PropsType = {
-  files: { name: string; isFolder: boolean; isCanTransition: boolean }[];
+  files: { name: string; type: string; isCanTransition: boolean }[];
 };
 
 export default function FilesDisplay({ files }: PropsType) {
@@ -39,6 +39,7 @@ export default function FilesDisplay({ files }: PropsType) {
       <div className={styles.filesBlock}>
         {files.map((item) => (
           <div
+            className={styles[item.type]}
             key={getKey(item.name)}
             onClick={() => goToPath(item.name, item.isCanTransition)}
           >

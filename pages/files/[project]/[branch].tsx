@@ -4,7 +4,7 @@ import { getFolderContent } from "services/firebase";
 
 type fileInfo = {
   name: string;
-  isFolder: boolean;
+  type: string;
   isCanTransition: boolean;
 };
 
@@ -90,17 +90,48 @@ function solveFiles(
     }
 
     if (contentItem) {
-      files.push({ ...contentItem, isCanTransition });
+      files.push({
+        ...contentItem,
+        type: getType(contentItem),
+        isCanTransition,
+      });
     } else {
-      files.push({ name: "-", isFolder: false, isCanTransition });
+      files.push({ name: "-", type: "notExists", isCanTransition });
     }
 
     if (contentItemOriginal) {
-      filesOriginal.push({ ...contentItemOriginal, isCanTransition });
+      filesOriginal.push({
+        ...contentItemOriginal,
+        type: getType(contentItemOriginal),
+        isCanTransition,
+      });
     } else {
-      filesOriginal.push({ name: "-", isFolder: false, isCanTransition });
+      filesOriginal.push({ name: "-", type: "notExists", isCanTransition });
     }
   });
 
   return [files, filesOriginal];
+}
+
+function getType({
+  name,
+  isFolder,
+}: {
+  name: string;
+  isFolder: boolean;
+}): string {
+  if (isFolder) {
+    return "folder";
+  }
+  if (name.endsWith(".png")) {
+    return "image";
+  }
+  if (name.endsWith(".txt")) {
+    return "text";
+  }
+  if (name === "-") {
+    return "notExists";
+  }
+
+  return "undefinedType";
 }
