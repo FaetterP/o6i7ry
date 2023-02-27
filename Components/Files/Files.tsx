@@ -1,3 +1,4 @@
+import ImageComparison from "Components/General/ImageComparison/ImageComparison";
 import FilesDisplay from "./FilesDisplay";
 import PathDisplay from "./PathDisplay";
 
@@ -24,6 +25,10 @@ export default function Files(props: PropsType) {
       <div>
         <PathDisplay pathPieces={props.path} />
         <div style={{ display: "flex" }}>
+          <ImageComparison
+            imageBase64={props.texture32!}
+            imageOriginalBase64={props.texture16!}
+          />
           <FilesDisplay files={props.files!} />
           <FilesDisplay files={props.filesOriginal!} />
         </div>

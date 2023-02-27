@@ -1,6 +1,6 @@
 import Files from "Components/Files/Files";
 import { GetServerSidePropsContext } from "next";
-import { getFolderContent } from "services/firebase";
+import { getFileContent, getFolderContent } from "services/firebase";
 
 type fileInfo = {
   name: string;
@@ -33,23 +33,47 @@ export async function getServerSideProps(
   ctx: GetServerSidePropsContext
 ): Promise<{ props: PropsType }> {
   const pathPieces = getPathPieces(ctx.query.path);
+  let imageName = "";
+  if (pathPieces.length > 0 && pathPieces.at(-1)!.endsWith(".png")) {
+    imageName = pathPieces.pop()!;
+  }
   const path: string =
     pathPieces.length === 0 ? "" : pathPieces.reduce((a, b) => `${a}/${b}`);
 
   const project = [ctx.query.project].flat()[0] || "OLN";
   const branch = [ctx.query.branch].flat()[0] || "Magic";
 
-  const content = await getFolderContent(project, branch, path);
-  const contentOriginal = await getFolderContent(
+  const folderContent = await getFolderContent(project, branch, path);
+  const folderContentOriginal = await getFolderContent(
     project,
     `${branch}-orig`,
     path
   );
 
-  const [files, filesOriginal] = solveFiles(content, contentOriginal);
+  let [texture16, texture32]: string[] | undefined[] = [undefined, undefined];
+  if (imageName) {
+    [texture16, texture32] = await getContent(
+      project,
+      branch,
+      `${path} ${imageName}`
+    );
+  }
+
+  const [files, filesOriginal] = solveFiles(
+    folderContent,
+    folderContentOriginal
+  );
 
   return {
-    props: { path: pathPieces, files, filesOriginal },
+    props: JSON.parse(
+      JSON.stringify({
+        path: pathPieces,
+        files,
+        filesOriginal,
+        texture16,
+        texture32,
+      })
+    ),
   };
 }
 
@@ -134,4 +158,15 @@ function getType({
   }
 
   return "undefinedType";
+}
+
+async function getContent(
+  project: string,
+  branch: string,
+  path: string
+): Promise<string[]> {
+  const originalContent = await getFileContent(project, branch, path);
+  const content = await getFileContent(project, `${branch}-orig`, path);
+
+  return [originalContent, content];
 }

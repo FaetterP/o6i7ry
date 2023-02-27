@@ -1,0 +1,12 @@
+.imageComparisonBlock {
+  width: 340px;
+  height: 340px;
+
+  background: #302f31;
+  border: 0.1px solid #cbc9cf;
+  border-radius: 4px;
+
+  img {
+    image-rendering: pixelated;
+  }
+}

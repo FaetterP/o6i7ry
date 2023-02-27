@@ -17,11 +17,13 @@ export default function FilesDisplay({ files }: PropsType) {
     let newPathPieces: string[] = [addedPath];
     const queryPath = router.query.path;
     if (queryPath) {
-      if (Array.isArray(queryPath)) {
-        newPathPieces = [...queryPath, addedPath];
-      } else {
-        newPathPieces = [queryPath, addedPath];
+      if (
+        Array.isArray(queryPath) &&
+        queryPath.at(-1)!.endsWith(".png")
+      ) {
+        queryPath.pop();
       }
+      newPathPieces = [queryPath, addedPath].flat();
     }
 
     router.push({

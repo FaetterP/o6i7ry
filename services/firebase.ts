@@ -61,6 +61,18 @@ export async function getFolderContent(
   return ret;
 }
 
+export async function getFileContent(
+  resourcepack: string,
+  branch: string,
+  path: string
+) {
+  path = path.replaceAll("/", " ").replaceAll(".", ",");
+  const content = await getValue<string>(
+    `${resourcepack}-assets/${branch}/assets${path ? ` ${path}` : ""}/content`
+  );
+  return content;
+}
+
 async function getValue<T>(path: string) {
   const dbRef = ref(getDatabase());
   const snapshot = await get(child(dbRef, path));

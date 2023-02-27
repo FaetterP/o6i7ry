@@ -20,7 +20,9 @@ export default function PathDisplay({ pathPieces }: PropsType) {
       <div className={styles.pathBlock}>
         <h1 onClick={() => goToPath(-1)}>{"/"}</h1>
         {pathPieces.map((item, index) => (
-          <h1 onClick={() => goToPath(index)}>{item}</h1>
+          <h1 key={item} onClick={() => goToPath(index)}>
+            {item}
+          </h1>
         ))}
       </div>
     </>
