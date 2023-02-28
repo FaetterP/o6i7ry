@@ -13,9 +13,16 @@ export default function ImageComparison({
 }: PropsType) {
   const [isOriginal, setIsOriginal] = useState(false);
 
+  function changeView() {
+    setIsOriginal(!isOriginal);
+  }
+
   return (
     <>
       <div className={styles.imageComparisonBlock}>
+        <div className={styles.changeViewToOriginalButton} onClick={changeView}>
+          {isOriginal ? "32" : "16"}
+        </div>
         <Image
           src={`data:image/png;base64, ${
             isOriginal ? imageOriginalBase64 : imageBase64
