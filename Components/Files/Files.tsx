@@ -1,4 +1,5 @@
 import ImageComparison from "Components/General/ImageComparison/ImageComparison";
+import ChooseBranch from "./ChooseBanch";
 import FilesDisplay from "./FilesDisplay";
 import PathDisplay from "./PathDisplay";
 
@@ -24,7 +25,8 @@ export default function Files(props: PropsType) {
     <>
       <div>
         <div style={{ display: "flex" }}>
-          <div style={{height:"100px", position:"sticky", top:"0"}}>
+          <div style={{ height: "100px", position: "sticky", top: "0" }}>
+            <ChooseBranch />
             <PathDisplay pathPieces={props.path} />
             <ImageComparison
               imageBase64={props.texture32!}
