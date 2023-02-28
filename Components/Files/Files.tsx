@@ -23,12 +23,14 @@ export default function Files(props: PropsType) {
   return (
     <>
       <div>
-        <PathDisplay pathPieces={props.path} />
         <div style={{ display: "flex" }}>
-          <ImageComparison
-            imageBase64={props.texture32!}
-            imageOriginalBase64={props.texture16!}
-          />
+          <div style={{height:"100px", position:"sticky", top:"0"}}>
+            <PathDisplay pathPieces={props.path} />
+            <ImageComparison
+              imageBase64={props.texture32!}
+              imageOriginalBase64={props.texture16!}
+            />
+          </div>
           <FilesDisplay files={props.files!} />
           <FilesDisplay files={props.filesOriginal!} />
         </div>

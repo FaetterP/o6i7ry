@@ -17,6 +17,10 @@ export default function ImageComparison({
     setIsOriginal(!isOriginal);
   }
 
+  if (!imageBase64 && !imageOriginalBase64) {
+    return <></>;
+  }
+
   return (
     <>
       <div className={styles.imageComparisonBlock}>
