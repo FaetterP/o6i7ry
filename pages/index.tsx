@@ -1,5 +1,9 @@
-import { getFolderContent } from "services/firebase";
+import Landing from "Components/Landing/Landing";
 
 export default function MainPage() {
-  return <div>Hello</div>;
+  return (
+    <>
+      <Landing />
+    </>
+  );
 }
