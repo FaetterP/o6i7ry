@@ -1,7 +1,8 @@
 import { FirebaseApp, initializeApp } from "firebase/app";
-import { getDatabase, ref, get, child } from "firebase/database";
+import { getDatabase, ref, get, child, set } from "firebase/database";
 import config from "config";
 import { HttpError } from "utils.ts/HttpError";
+import { Project } from "types/general";
 
 type FirebaseConfig = {
   apiKey: string;
@@ -82,4 +83,17 @@ async function getValue<T>(path: string) {
   }
 
   return snapshot.val() as T;
+}
+
+export async function setValue(path: string, data: any) {
+  connectToFirebase();
+  const dbRef = ref(getDatabase(), path);
+  await set(dbRef, data);
+}
+
+export async function getProjects() {
+  connectToFirebase();
+  const projects =
+    getValue<Project[]>("/projects");
+  return projects;
 }
