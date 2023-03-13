@@ -37,11 +37,7 @@ export default function UnityTutorialPage({ content, title }: PropsType) {
       <h1>{title}</h1>
       <div className={styles.tutorialBlock}>
         {content.map((item) => (
-          <div>
-            {item.map((element) => (
-              getElement(element)
-            ))}
-          </div>
+          <div>{item.map((element) => getElement(element))}</div>
         ))}
       </div>
     </>
