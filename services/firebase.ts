@@ -93,7 +93,12 @@ export async function setValue(path: string, data: any) {
 
 export async function getProjects() {
   connectToFirebase();
-  const projects =
-    getValue<Project[]>("/projects");
+  const projects = getValue<Project[]>("/projects");
   return projects;
+}
+
+export async function getUnityTutorial(pageName: string) {
+  connectToFirebase();
+  const page = getValue<Project[]>(`/unity/${pageName}`);
+  return page;
 }
