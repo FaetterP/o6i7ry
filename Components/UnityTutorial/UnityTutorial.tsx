@@ -15,7 +15,7 @@ type PropsType = {
   content: ItemType[][];
 };
 
-export default function UnityTutorialPage({ content, title }: PropsType) {
+export default function UnityTutorial({ content, title }: PropsType) {
   function getElement(element: ItemType) {
     switch (element.type) {
       case "b":
