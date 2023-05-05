@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    transpilePackages: ['react-syntax-highlighter/dist/esm/styles/hljs',],
     images: {
         remotePatterns: [
             {

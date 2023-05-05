@@ -1,6 +1,7 @@
 import SyntaxHighlighter from "react-syntax-highlighter";
 import styles from "./Tutorial.module.scss";
 import shortid from "shortid";
+import { vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 type ItemType =
   | { type: "br" }
@@ -28,7 +29,7 @@ export default function UnityTutorial({ content, title }: PropsType) {
         return <img src={element.src} />;
       case "code":
         return (
-          <SyntaxHighlighter language="csharp">
+          <SyntaxHighlighter language="csharp" style={vs2015}>
             {element.code}
           </SyntaxHighlighter>
         );
@@ -47,7 +48,9 @@ export default function UnityTutorial({ content, title }: PropsType) {
     return (
       <>
         {content.map((item) => (
-          <div key={shortid()}>{item.map((element) => getElement(element))}</div>
+          <div key={shortid()}>
+            {item.map((element) => getElement(element))}
+          </div>
         ))}
       </>
     );
@@ -55,7 +58,7 @@ export default function UnityTutorial({ content, title }: PropsType) {
 
   return (
     <>
-      <h1>{title}</h1>
+      <h1 className={styles.title}>{title}</h1>
       <div className={styles.tutorialBlock}>{getElements(content)}</div>
     </>
   );
