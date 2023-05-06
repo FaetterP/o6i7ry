@@ -5,9 +5,14 @@ import { vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 type ItemType =
   | { type: "br" }
-  | { type: "b"; text: string }
+  | { type: "hr" }
   | { type: "text"; text: string }
+  | { type: "title"; text: string }
+  | { type: "b"; text: string }
+  | { type: "s"; text: string }
+  | { type: "i"; text: string }
   | { type: "img"; src: string }
+  | { type: "a"; link: string; name: string }
   | { type: "code"; code: string }
   | { type: "list"; items: ItemType[][] };
 
@@ -21,8 +26,18 @@ export default function UnityTutorial({ content, title }: PropsType) {
     switch (element.type) {
       case "b":
         return <b>{element.text}</b>;
+      case "s":
+        return <s>{element.text}</s>;
+      case "i":
+        return <i>{element.text}</i>;
+      case "title":
+        return <h1 className={styles.title}>{element.text}</h1>;
       case "br":
         return <br />;
+      case "hr":
+        return <hr />;
+      case "a":
+        return <a href={element.link}>{element.name}</a>;
       case "text":
         return `${element.text}`;
       case "img":
@@ -58,7 +73,6 @@ export default function UnityTutorial({ content, title }: PropsType) {
 
   return (
     <>
-      <h1 className={styles.title}>{title}</h1>
       <div className={styles.tutorialBlock}>{getElements(content)}</div>
     </>
   );
