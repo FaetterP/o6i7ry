@@ -1,4 +1,4 @@
-import UnityTutorial from "Components/UnityTutorial/UnityTutorial";
+import UnityTutorial from "Components/Tutorial/Tutorial";
 import { GetServerSidePropsContext } from "next";
 import { getUnityTutorial } from "services/firebase";
 
