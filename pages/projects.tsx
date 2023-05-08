@@ -1,12 +1,9 @@
 import Projects from "Components/Projects/Projects";
 import { getProjects } from "services/firebase";
-import { Project } from "types/general";
 
-type PropsType = {
-  projects: Project[];
-};
-
-export default function ProjectsPage(props: PropsType) {
+export default function ProjectsPage(
+  props: Awaited<ReturnType<typeof getServerSideProps>>["props"]
+) {
   return (
     <>
       <Projects {...props} />
@@ -14,7 +11,7 @@ export default function ProjectsPage(props: PropsType) {
   );
 }
 
-export async function getServerSideProps(): Promise<{ props: PropsType }> {
+export async function getServerSideProps() {
   const projects = await getProjects();
   return { props: { projects } };
 }

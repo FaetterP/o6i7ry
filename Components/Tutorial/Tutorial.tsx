@@ -17,11 +17,10 @@ type ItemType =
   | { type: "list"; items: ItemType[][] };
 
 type PropsType = {
-  title: string;
   content: ItemType[][];
 };
 
-export default function UnityTutorial({ content, title }: PropsType) {
+export default function UnityTutorial({ content }: PropsType) {
   function getElement(element: ItemType) {
     switch (element.type) {
       case "b":

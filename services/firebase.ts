@@ -23,9 +23,26 @@ type FolderInfo = {
 type contentItemInfo = { name: string; isFolder: boolean };
 let app: FirebaseApp | undefined = undefined;
 
-export function connectToFirebase() {
+function connectToFirebase() {
   const firebaseConfig = config.get<FirebaseConfig>("firebase.config");
   app = initializeApp(firebaseConfig);
+}
+
+async function getValue<T>(path: string) {
+  const dbRef = ref(getDatabase());
+  const snapshot = await get(child(dbRef, path));
+
+  if (!snapshot.exists()) {
+    throw new Error("snapshot does not exist");
+  }
+
+  return snapshot.val() as T;
+}
+
+export async function setValue(path: string, data: any) {
+  connectToFirebase();
+  const dbRef = ref(getDatabase(), path);
+  await set(dbRef, data);
 }
 
 export async function getFolderContent(
@@ -74,31 +91,25 @@ export async function getFileContent(
   return content;
 }
 
-async function getValue<T>(path: string) {
-  const dbRef = ref(getDatabase());
-  const snapshot = await get(child(dbRef, path));
-
-  if (!snapshot.exists()) {
-    throw new Error("snapshot does not exist");
-  }
-
-  return snapshot.val() as T;
-}
-
-export async function setValue(path: string, data: any) {
-  connectToFirebase();
-  const dbRef = ref(getDatabase(), path);
-  await set(dbRef, data);
-}
-
 export async function getProjects() {
   connectToFirebase();
-  const projects = getValue<Project[]>("/projects");
+  const projects = await getValue<Project[]>("/projects");
   return projects;
 }
 
 export async function getUnityTutorial(pageName: string) {
   connectToFirebase();
-  const page = getValue<Project[]>(`/unity/${pageName}`);
+  const page = await getValue<{ content: any[] }>(`/unity/${pageName}`);
   return page;
+}
+
+export async function getOLN() {
+  connectToFirebase();
+  const categories = await getValue<
+    {
+      name: string;
+      modsInfo: { name: string; link: string; iconUrl: string }[];
+    }[]
+  >("OLN/categories");
+  return { categories };
 }
