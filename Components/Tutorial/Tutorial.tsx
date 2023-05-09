@@ -2,26 +2,14 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import styles from "./Tutorial.module.scss";
 import shortid from "shortid";
 import { vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
-
-type ItemType =
-  | { type: "br" }
-  | { type: "hr" }
-  | { type: "text"; text: string }
-  | { type: "title"; text: string }
-  | { type: "b"; text: string }
-  | { type: "s"; text: string }
-  | { type: "i"; text: string }
-  | { type: "img"; src: string }
-  | { type: "a"; link: string; name: string }
-  | { type: "code"; code: string }
-  | { type: "list"; items: ItemType[][] };
+import { TutorialItemType } from "types/general";
 
 type PropsType = {
-  content: ItemType[][];
+  content: TutorialItemType[][];
 };
 
-export default function UnityTutorial({ content }: PropsType) {
-  function getElement(element: ItemType) {
+export default function Tutorial({ content }: PropsType) {
+  function getElement(element: TutorialItemType) {
     switch (element.type) {
       case "b":
         return <b>{element.text}</b>;
@@ -58,7 +46,7 @@ export default function UnityTutorial({ content }: PropsType) {
     }
   }
 
-  function getElements(content: ItemType[][]) {
+  function getElements(content: TutorialItemType[][]) {
     return (
       <>
         {content.map((item) => (

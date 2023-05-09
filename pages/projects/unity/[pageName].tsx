@@ -1,8 +1,10 @@
-import UnityTutorial from "Components/Tutorial/Tutorial";
+import UnityTutorial from "Components/Unity/UnityTutorial";
 import { GetServerSidePropsContext } from "next";
 import { getUnityTutorial } from "services/firebase";
 
-export default function UnityTutorialPage(props: any) {
+export default function UnityTutorialPage(
+  props: Awaited<ReturnType<typeof getServerSideProps>>["props"]
+) {
   return (
     <>
       <UnityTutorial {...props} />

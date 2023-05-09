@@ -1,0 +1,30 @@
+.links {
+  color: white;
+
+  width: 50%;
+  color: white;
+  margin: 30px auto 0;
+
+  span {
+    font-style: italic;
+  }
+}
+
+.tutorial{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.moreLine {
+  height: 50px;
+  border: none;
+  border-bottom: 1px solid red;
+  box-shadow: 0 20px 20px -20px red;
+}
+
+.linksLine {
+  height: 50px;
+  border: none;
+  border-bottom: 1px solid cyan;
+  box-shadow: 0 20px 20px -20px cyan;
+}

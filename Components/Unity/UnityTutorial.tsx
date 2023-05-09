@@ -1,0 +1,47 @@
+import Tutorial from "Components/Tutorial/Tutorial";
+import { TutorialItemType } from "types/general";
+import styles from "./UnityTutorial.module.scss";
+
+type PropsType = {
+  content: TutorialItemType[][];
+  moreContent: TutorialItemType[][];
+  links: { name: string; link: string }[];
+};
+
+export default function UnityTutorial(props: PropsType) {
+  return (
+    <>
+      <div className={styles.tutorial}>
+        <Tutorial content={props.content} />
+      </div>
+
+      {props.moreContent ? (
+        <div className={styles.tutorial}>
+          <hr className={styles.moreLine} />
+          <Tutorial content={props.moreContent} />
+        </div>
+      ) : (
+        <></>
+      )}
+      {props.links ? (
+        <div className={styles.links}>
+          <hr className={styles.linksLine} />
+          <h1>Ссылки</h1>
+          <ul>
+            {props.links.map((item) => (
+              <li key={item.link}>
+                <span>
+                  {item.name}
+                  {": "}
+                </span>
+                <a href={item.link}>{item.link}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <></>
+      )}
+    </>
+  );
+}
