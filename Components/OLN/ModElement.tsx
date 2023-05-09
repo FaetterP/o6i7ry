@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Image, Group } from "react-konva";
+import { Image, Group, Circle } from "react-konva";
 import useImage from "use-image";
 
 type PropsType = {
@@ -8,8 +8,10 @@ type PropsType = {
   iconUrl: string;
 };
 
-const HEXAGON_IMAGE_PATH = "https://raw.githubusercontent.com/FaetterP/OLN/Magic/assets/thaumcraft/textures/gui/hex1.png"
-const HEXAGON_SELECTED_IMAGE_PATH = "https://raw.githubusercontent.com/FaetterP/OLN/Magic/assets/thaumcraft/textures/gui/hex2.png"
+const HEXAGON_IMAGE_PATH =
+  "https://raw.githubusercontent.com/FaetterP/OLN/Magic/assets/thaumcraft/textures/gui/hex1.png";
+const HEXAGON_SELECTED_IMAGE_PATH =
+  "https://raw.githubusercontent.com/FaetterP/OLN/Magic/assets/thaumcraft/textures/gui/hex2.png";
 
 export default function ModElement(props: PropsType) {
   let [getSelected, setSelected] = useState(false);
@@ -21,20 +23,20 @@ export default function ModElement(props: PropsType) {
   const r = size / 2;
   const x = props.x * (r * 1.5) + 50;
   const y = (props.y + props.x * 0.5 - Math.floor(props.x / 2)) * r * 2;
-
   return (
     <Group>
       <Image
+        cornerRadius={size}
         image={getSelected ? imageBackgroundSelected : imageBackground}
         x={x}
         y={y}
         width={size}
         height={size}
         shadowBlur={5}
-        onMouseEnter={(e) => {
+        onMouseEnter={() => {
           setSelected(true);
         }}
-        onMouseLeave={(e) => {
+        onMouseLeave={() => {
           setSelected(false);
         }}
       />
@@ -45,10 +47,10 @@ export default function ModElement(props: PropsType) {
         width={size / 2}
         height={size / 2}
         shadowBlur={5}
-        onMouseEnter={(e) => {
+        onMouseEnter={() => {
           setSelected(true);
         }}
-        onMouseLeave={(e) => {
+        onMouseLeave={() => {
           setSelected(false);
         }}
       />
