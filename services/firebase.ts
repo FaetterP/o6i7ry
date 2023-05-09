@@ -99,7 +99,11 @@ export async function getProjects() {
 
 export async function getUnityTutorial(pageName: string) {
   connectToFirebase();
-  const page = await getValue<{ content: any[] }>(`/unity/${pageName}`);
+  const page = await getValue<{
+    content: any[];
+    moreContent: any[];
+    links: { name: string; link: string }[];
+  }>(`/unity/${pageName}`);
   return page;
 }
 
