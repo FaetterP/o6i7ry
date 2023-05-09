@@ -12,7 +12,7 @@ export default function OLN({ categories }: PropsType) {
     <>
       {categories.map((item) => {
         return (
-          <div>
+          <div key={item.name}>
             <CategoryComponent {...item} />
             <hr />
           </div>

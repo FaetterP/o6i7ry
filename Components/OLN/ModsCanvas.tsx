@@ -2,7 +2,10 @@ import React from "react";
 import { Stage, Layer } from "react-konva";
 import ModElement from "./ModElement";
 
-type PropsType = { sizeX: number; modsInfo: { name:string, link:string, iconUrl: string }[] };
+type PropsType = {
+  sizeX: number;
+  modsInfo: { name: string; link: string; iconUrl: string }[];
+};
 
 export default function ModsCanvas({ sizeX, modsInfo }: PropsType) {
   function getHeight() {
@@ -21,6 +24,7 @@ export default function ModsCanvas({ sizeX, modsInfo }: PropsType) {
       <Layer>
         {modsInfo.map((item, index) => (
           <ModElement
+            key={item.name}
             x={index % sizeX}
             y={Math.floor(index / sizeX)}
             iconUrl={item.iconUrl}

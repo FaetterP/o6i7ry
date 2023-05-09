@@ -27,7 +27,7 @@ export default function CategoryComponent({ name, modsInfo }: PropsType) {
         <table>
           <tbody>
             {modsInfo.map((item) => (
-              <tr>
+              <tr key={item.name}>
                 <td>
                   <a href={item.link}>{item.name}</a>
                 </td>
