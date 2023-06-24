@@ -2,7 +2,7 @@ import { FirebaseApp, initializeApp } from "firebase/app";
 import { getDatabase, ref, get, child, set } from "firebase/database";
 import config from "config";
 import { HttpError } from "utils.ts/HttpError";
-import { Project, TutorialItemType } from "types/general";
+import { Project } from "types/general";
 
 type FirebaseConfig = {
   apiKey: string;
@@ -100,11 +100,23 @@ export async function getProjects() {
 export async function getUnityTutorial(pageName: string) {
   connectToFirebase();
   const page = await getValue<{
-    content: TutorialItemType[][];
-    moreContent: TutorialItemType[][];
+    content: string;
+    moreContent: string;
     links: { name: string; link: string }[];
   }>(`/unity/${pageName}`);
   return page;
+}
+
+export async function saveUnityTutorial(
+  pageName: string,
+  data: {
+    content: string;
+    moreContent: string;
+    links: { name: string; link: string }[];
+  }
+) {
+  connectToFirebase();
+  await setValue(`/unity/${pageName}`, data);
 }
 
 export async function getOLN() {

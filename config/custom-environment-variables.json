@@ -1,4 +1,7 @@
 {
+  "server": {
+    "host": "SERVER_HOST"
+  },
   "firebase": {
     "config": {
       "apiKey": "FIREBASE_API_KEY",
@@ -9,5 +12,9 @@
       "messagingSenderId": "FIREBASE_MESSAGING_SENDER_ID",
       "appId": "FIREBASE_APP_ID"
     }
+  },
+  "admin": {
+    "password": "ADMIN_PASSWORD",
+    "secret": "NEXTAUTH_SECRET"
   }
 }

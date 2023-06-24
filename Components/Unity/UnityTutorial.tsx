@@ -1,10 +1,9 @@
 import Tutorial from "Components/Tutorial/Tutorial";
-import { TutorialItemType } from "types/general";
 import styles from "./UnityTutorial.module.scss";
 
 type PropsType = {
-  content: TutorialItemType[][];
-  moreContent: TutorialItemType[][];
+  content: string;
+  moreContent: string;
   links: { name: string; link: string }[];
 };
 

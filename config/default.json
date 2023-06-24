@@ -1,4 +1,7 @@
 {
+  "server": {
+    "host": ""
+  },
   "firebase": {
     "config": {
       "apiKey": "",
@@ -9,5 +12,9 @@
       "messagingSenderId": "",
       "appId": ""
     }
+  },
+  "admin": {
+    "password": "",
+    "secret": ""
   }
 }
