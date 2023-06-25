@@ -35,7 +35,7 @@ export default function EditPage(props: {
   }
 
   return (
-    <div>
+    <div >
       <form onSubmit={formik.handleSubmit}>
         <div>
           <EditContent
@@ -59,9 +59,10 @@ export default function EditPage(props: {
         </div>
 
         <button type="submit">Save form</button>
+        <hr />
       </form>
 
-      <UnityTutorial {...formik.values} />
+    <div style={{overflowY: "scroll", maxHeight:"70vh"}}><UnityTutorial {...formik.values} /></div>
     </div>
   );
 }
