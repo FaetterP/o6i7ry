@@ -1,4 +1,4 @@
-@import 'material-icons/iconfont/material-icons.scss';
+@import "material-icons/iconfont/material-icons.scss";
 
 body {
   background: #1e1e1f;
@@ -22,4 +22,12 @@ a {
 
 .main {
   flex: 1 1 auto;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1180px;
+  margin-right: auto;
+  margin-left: auto;
+  position: relative;
 }

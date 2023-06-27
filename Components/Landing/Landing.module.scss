@@ -1,27 +1,22 @@
 .centerBlock {
-  height: 500px;
-  width: 550px;
-  margin: 0 auto;
+  width: 543px;
+  margin: 30vh auto;
   display: flex;
-  align-items: center;
-
   text-align: center;
 
   h1 {
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 900;
-    font-size: 36px;
-    line-height: 44px;
     color: #e6e6e6;
+    margin-bottom: 13px;
+    font-size: 36px;
+    font-family: Montserrat;
+    font-weight: 900;
   }
 
   h2 {
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
     color: #3c3b3d;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: Montserrat;
   }
 }

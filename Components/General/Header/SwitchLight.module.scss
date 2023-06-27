@@ -1,0 +1,9 @@
+.switchLight {
+  color: #e6e6e6;
+  display: block!important;
+  
+  span{
+    cursor: pointer;
+    user-select: none;
+  }
+}
