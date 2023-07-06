@@ -2,13 +2,13 @@
   margin: 0 10px;
 
   background: #302f31;
-  border: 0.1px solid #cbc9cf;
+  border: 0.1px solid var(--accent-color);
   border-radius: 4px;
   width: 50%;
   text-align: center;
 
   div:hover {
-    background-color: #6d6c70;
+    background-color: var(--accent-color);
   }
 }
 

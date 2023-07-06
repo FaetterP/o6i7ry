@@ -1,17 +1,23 @@
-import React, { useState } from 'react';
-import styles from './SwitchLight.module.scss';
+import React, { useContext, useEffect } from "react";
+import { ThemeContext } from "hocs/ThemeProvider";
+import styles from "./SwitchLight.module.scss";
 
 const SwitchLight: React.FC = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const { isLightMode, toggleLightMode } = useContext(ThemeContext);
 
-  const toggleColorScheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isLightMode) {
+      root.classList.add("light-mode");
+    } else {
+      root.classList.remove("light-mode");
+    }
+  }, [isLightMode]);
 
   return (
-    <ul className={`${styles.switchLight} ${isDarkMode ? styles.dark : styles.light}`}>
-      <span className="material-icons-outlined" onClick={toggleColorScheme}>
-        {isDarkMode ? 'dark_mode' : 'light_mode'}
+    <ul className={styles.switchLight}>
+      <span className="material-symbols-outlined" onClick={toggleLightMode}>
+        {isLightMode ? "dark_mode" : "light_mode"}
       </span>
     </ul>
   );

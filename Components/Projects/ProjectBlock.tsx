@@ -12,7 +12,7 @@ export default function ProjectPreview(props: PropsType) {
     <>
       <div className={styles.projectPreview}>
         <div style={{ display: "flex" }}>
-          <h2>{props.title}</h2> {"//"}
+          <h2 title={props.title}>{props.title}</h2> {"//"}
           {props.type}
         </div>
         <Image src={props.src} alt={props.title} width={180} height={180} />

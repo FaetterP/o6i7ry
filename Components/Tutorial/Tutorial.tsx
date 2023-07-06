@@ -2,7 +2,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import styles from "./Tutorial.module.scss";
 import { vs2015 } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-import rehypeRaw from 'rehype-raw'
+import rehypeRaw from "rehype-raw";
 
 type PropsType = {
   content: string;

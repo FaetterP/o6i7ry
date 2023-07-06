@@ -1,7 +1,21 @@
 @import "material-icons/iconfont/material-icons.scss";
 
+:root {
+  --primary-color: #1e1e1f;
+  --secondary-color: #f2f2f2;
+  --accent-color: #6d6c70;
+  --card-color: #3C3B3D;
+}
+
+.light-mode {
+  --primary-color: #f2f2f2;
+  --secondary-color: #1e1e1f;
+  --accent-color: #6d6c70;
+  --card-color: #A6A6A6;
+}
+
 body {
-  background: #1e1e1f;
+  background: var(--primary-color);
 }
 
 * {
