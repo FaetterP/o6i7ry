@@ -1,26 +1,12 @@
 .navigationItemButton {
-  padding: 4px 15px;
-  border-radius: 6px;
-  cursor: pointer;
   display: inline-block;
-
-  list-style-type: none;
-
-  transition: 0.5s;
-}
-
-.navigationItemButton:hover {
-  background-color: #333;
-  transition: 0.5s;
+  list-style: none;
 }
 
 .navigationItemLabel {
-  font-family: "Montserrat";
-  font-style: normal;
+  color: var(--secondary-color);
+  font-size: 15px;
+  font-family: Montserrat;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 20px;
-
   text-decoration: none;
-  color: #e6e6e6;
 }

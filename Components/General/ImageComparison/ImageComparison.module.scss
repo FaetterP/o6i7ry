@@ -4,7 +4,7 @@
   margin: 10px;
 
   background: #302f31;
-  border: 0.1px solid #cbc9cf;
+  border: 0.1px solid var(--accent-color);
   border-radius: 4px;
 
   img {
@@ -29,10 +29,10 @@
   font-size: 20px;
   line-height: 24px;
   text-align: center;
-  color: #cbc9cf;
+  color: var(--accent-color);
 
   cursor: pointer;
 }
 .changeViewToOriginalButton:hover {
-  background: #6d6c70;
+  background: var(--accent-color);
 }

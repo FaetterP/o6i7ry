@@ -1,33 +1,27 @@
 .projectPreview {
-  color: #cbc9cf;
+  color: var(--accent-color);
 
   h2 {
-    display: flex;
-
-    font-family: "Montserrat";
-    font-style: normal;
+    font-family: Montserrat;
     font-weight: 500;
     font-size: 13px;
-    line-height: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   img {
-    width: 180px;
-    height: 180px;
-    left: 370px;
-    top: 206px;
-
-    background: #302f31;
+    background: var(--card-color);
     border-radius: 9px;
   }
 }
 
 .projectPreview:hover {
   h2 {
-    color: white;
+    color: var(--secondary-color);
   }
 
   img {
-    background: #525154;
+    background: var(--buttonHover-color);
   }
 }

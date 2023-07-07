@@ -1,0 +1,8 @@
+.switchLight {
+  color: var(--secondary-color);
+  
+  span{
+    cursor: pointer;
+    user-select: none;
+  }
+}

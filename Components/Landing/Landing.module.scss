@@ -1,27 +1,22 @@
 .centerBlock {
-  height: 500px;
-  width: 550px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-
+  width: 543px;
+  margin: auto;
+  margin-top: 30vh;
   text-align: center;
 
   h1 {
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 900;
+    color: var(--secondary-color);
+    margin-bottom: 13px;
     font-size: 36px;
-    line-height: 44px;
-    color: #e6e6e6;
+    font-family: Montserrat;
+    font-weight: 900;
   }
 
   h2 {
-    font-family: "Montserrat";
-    font-style: normal;
-    font-weight: 400;
+    color: var(--accent-color);
+    text-align: center;
     font-size: 16px;
-    line-height: 20px;
-    color: #3c3b3d;
+    font-weight: 400;
+    font-family: Montserrat;
   }
 }

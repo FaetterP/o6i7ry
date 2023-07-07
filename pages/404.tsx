@@ -1,7 +1,24 @@
+import styles from "./404.module.scss";
+import Image from "next/image";
+import errorImage from "../public/404.svg";
+
 export default function Page404() {
   return (
     <>
-      <div style={{ color: "red" }}>404</div>
+      <div className="wrapper">
+        <div className={styles.parentContainer}>
+          <Image
+            src={errorImage}
+            alt="404 page not found"
+            width={223}
+            height={184}
+          />
+          <div className={styles.textContainer}>
+            <h1>404</h1>
+            <h2>Page not found</h2>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
