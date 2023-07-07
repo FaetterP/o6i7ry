@@ -7,7 +7,7 @@ type PropsType = {
 export default function EditContent({ name, content, formik }: PropsType) {
   return (
     <div>
-      <textarea name={name} onChange={formik.handleChange} value={content} />
+      <textarea name={name} onChange={formik.handleChange} value={content} style={{padding:"10px"}} />
     </div>
   );
 }
