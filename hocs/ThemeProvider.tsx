@@ -18,23 +18,24 @@ const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
   const [isLightMode, setIsLightMode] = useState(true);
 
   const toggleLightMode = () => {
-    setIsLightMode(!isLightMode);
+    const updatedMode = !isLightMode;
+    setIsLightMode(updatedMode);
+    localStorage.setItem("isLightMode", JSON.stringify(updatedMode));
   };
 
   useEffect(() => {
-    const lightModeQuery = window.matchMedia("(prefers-color-scheme: light)");
-
-    const handleLightModeChange = (e: MediaQueryListEvent) => {
-      setIsLightMode(e.matches);
-    };
-
-    lightModeQuery.addEventListener("change", handleLightModeChange);
-    setIsLightMode(lightModeQuery.matches);
-
-    return () => {
-      lightModeQuery.removeEventListener("change", handleLightModeChange);
-    };
+    const savedMode = localStorage.getItem("isLightMode");
+    if (savedMode) {
+      setIsLightMode(JSON.parse(savedMode));
+    } else {
+      const lightModeQuery = window.matchMedia("(prefers-color-scheme: light)");
+      setIsLightMode(lightModeQuery.matches);
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("isLightMode", JSON.stringify(isLightMode));
+  }, [isLightMode]);
 
   const contextValue: ThemeContextType = {
     isLightMode,

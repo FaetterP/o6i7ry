@@ -1,8 +1,15 @@
 import styles from "./About.module.scss";
-import logoImage from "../../public/about.svg";
 import Image from "next/image";
+import { useContext } from "react";
+import { ThemeContext } from "hocs/ThemeProvider";
+import lightAbout from "../../public/lightAbout.svg";
+import darkAbout from "../../public/darkAbout.svg";
 
 export default function About() {
+  const { isLightMode } = useContext(ThemeContext);
+
+  const aboutSrc = isLightMode ? lightAbout : darkAbout;
+
   return (
     <div className="wrapper">
       <div className={styles.aboutContainer}>
@@ -19,12 +26,7 @@ export default function About() {
           </h2>
         </div>
         <div className={styles.imageContainer}>
-          <Image
-            src={logoImage}
-            alt="Picture of the author"
-            width={460}
-            height={413}
-          />
+          <Image src={aboutSrc} alt="Logo" width={460} height={413} />
         </div>
       </div>
     </div>

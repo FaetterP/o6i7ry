@@ -8,7 +8,9 @@ export default function Header() {
     <>
       <header className="wrapper">
         <ul className={styles.headerContainer}>
-          <Logo />
+          <ul>
+            <Logo />
+          </ul>
           <ul className={styles.navContainer}>
             <HeaderNavButton title="Home" link="/" />
             <HeaderNavButton title="Projects" link="/projects" />
