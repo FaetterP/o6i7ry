@@ -31,6 +31,7 @@ export default function Contact() {
             value={formik.values.name}
             className={styles.textarea}
             placeholder="name"
+            maxLength={100}
           />
           <textarea
             name="email"
@@ -38,6 +39,7 @@ export default function Contact() {
             value={formik.values.email}
             className={styles.textarea}
             placeholder="email"
+            maxLength={100}
           />
           <textarea
             name="subject"
@@ -45,6 +47,7 @@ export default function Contact() {
             value={formik.values.subject}
             className={styles.textarea}
             placeholder="subject"
+            maxLength={100}
           />
           <div>
             <textarea
@@ -61,9 +64,7 @@ export default function Contact() {
             />
             <div
               className={`${styles.counter} ${
-                formik.values.message.length >= 1000
-                  ? styles["counter--error"]
-                  : ""
+                formik.values.message.length >= 1000 ? styles.counterError : ""
               }`}
             >
               {formik.values.message.length}/1000

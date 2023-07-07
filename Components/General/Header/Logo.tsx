@@ -1,18 +1,32 @@
-import Image from "next/image";
-import { useContext } from "react";
-import { ThemeContext } from "hocs/ThemeProvider";
+import Image, { StaticImageData } from "next/image";
 import lightLogo from "../../../public/lightLogo.svg";
 import darkLogo from "../../../public/darkLogo.svg";
 import Link from "next/link";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 export default function Logo() {
-  const { isLightMode } = useContext(ThemeContext);
+  const { resolvedTheme } = useTheme();
+  const [logoSrc, setImageSrc] = useState<StaticImageData | string | null>(
+    null
+  );
 
-  const logoSrc = isLightMode ? darkLogo : lightLogo;
+  useEffect(() => {
+    switch (resolvedTheme) {
+      case "light-mode":
+        setImageSrc(darkLogo);
+        break;
+      default:
+        setImageSrc(lightLogo);
+        break;
+    }
+  }, [resolvedTheme]);
 
   return (
     <Link href="/">
-      <Image src={logoSrc} alt="Logo" width={112.5} height={34.5} />
+      {logoSrc && (
+        <Image src={logoSrc} alt="Logo" width={112.5} height={34.5} />
+      )}
     </Link>
   );
 }

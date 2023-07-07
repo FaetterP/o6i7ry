@@ -1,14 +1,26 @@
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import styles from "./About.module.scss";
-import Image from "next/image";
-import { useContext } from "react";
-import { ThemeContext } from "hocs/ThemeProvider";
-import lightAbout from "../../public/lightAbout.svg";
-import darkAbout from "../../public/darkAbout.svg";
+import Image, { StaticImageData } from "next/image";
+import lightImage from "../../public/lightImage.svg";
+import darkImage from "../../public/darkImage.svg";
 
 export default function About() {
-  const { isLightMode } = useContext(ThemeContext);
+  const { resolvedTheme } = useTheme();
+  const [imageSrc, setImageSrc] = useState<StaticImageData | string | null>(
+    null
+  );
 
-  const aboutSrc = isLightMode ? lightAbout : darkAbout;
+  useEffect(() => {
+    switch (resolvedTheme) {
+      case "light-mode":
+        setImageSrc(lightImage);
+        break;
+      default:
+        setImageSrc(darkImage);
+        break;
+    }
+  }, [resolvedTheme]);
 
   return (
     <div className="wrapper">
@@ -26,7 +38,9 @@ export default function About() {
           </h2>
         </div>
         <div className={styles.imageContainer}>
-          <Image src={aboutSrc} alt="Logo" width={460} height={413} />
+          {imageSrc && (
+            <Image src={imageSrc} alt="Stone" width={460} height={413} />
+          )}
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 @import "material-icons/iconfont/material-icons.scss";
 
-:root {
+:root{
   --primary-color: #1e1e1f;
   --secondary-color: #f2f2f2;
   --accent-color: #6d6c70;
@@ -10,7 +10,7 @@
   --error-color: #FD4C4B;
 }
 
-.light-mode {
+[data-theme='light-mode'] {
   --primary-color: #f2f2f2;
   --secondary-color: #1e1e1f;
   --accent-color: #6d6c70;
