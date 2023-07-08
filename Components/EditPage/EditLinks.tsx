@@ -19,7 +19,7 @@ export default function EditLinks({ links, formik }: PropsType) {
   return (
     <div>
       {links.map((item, index) => (
-        <div>
+        <div key={`${index}-${item.link}`}>
           <input
             name={`links.${index}.name`}
             onChange={formik.handleChange}

@@ -14,7 +14,6 @@ export default function Tutorial(props: PropsType) {
     <>
       <ReactMarkdown
         className={styles.tutorialBlock}
-        children={props.content}
         rehypePlugins={[rehypeRaw]}
         remarkPlugins={[remarkGfm]}
         components={{
@@ -23,11 +22,12 @@ export default function Tutorial(props: PropsType) {
             return !inline && match ? (
               <SyntaxHighlighter
                 {...props}
-                children={String(children).replace(/\n$/, "")}
                 style={vs2015}
                 language={match[1]}
                 PreTag="div"
-              />
+              >
+                {String(children).replace(/\n$/, "")}
+              </SyntaxHighlighter>
             ) : (
               <code {...props} className={className}>
                 {children}
@@ -35,7 +35,9 @@ export default function Tutorial(props: PropsType) {
             );
           },
         }}
-      />
+      >
+        {props.content}
+      </ReactMarkdown>
     </>
   );
 }
