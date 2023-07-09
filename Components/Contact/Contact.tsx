@@ -1,5 +1,6 @@
 import { useFormik } from "formik";
 import styles from "./Contact.module.scss";
+import axios from "axios";
 
 export default function Contact() {
   const formik = useFormik({
@@ -10,7 +11,12 @@ export default function Contact() {
       message: "",
     },
     onSubmit: async (values) => {
-      console.log(values);
+      try {
+        const response = await axios.post("/api/mail/send", values);
+        console.log(response);
+      } catch (error) {
+        console.error(error);
+      }
     },
   });
 
