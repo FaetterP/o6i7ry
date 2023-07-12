@@ -9,20 +9,20 @@ type PropsType = {
 
 export default function Projects(props: PropsType) {
   return (
-    <>
+    <div className="center">
       <div className="wrapper">
         <div className={styles.projects}>
-          {props.projects.map((item) => (
-            <Link key={item.name} href={`/projects/${item.urlName}`}>
-              <ProjectBlock
-                title={item.name}
-                type={item.type}
-                src={item.icon}
-              />
-            </Link>
-          ))}
+            {props.projects.map((item) => (
+              <Link key={item.name} href={`/projects/${item.urlName}`}>
+                <ProjectBlock
+                  title={item.name}
+                  type={item.type}
+                  src={item.icon}
+                />
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
-    </>
   );
 }

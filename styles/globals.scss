@@ -1,24 +1,43 @@
 @import "material-icons/iconfont/material-icons.scss";
 
-:root{
+:root {
   --primary-color: #1e1e1f;
   --secondary-color: #f2f2f2;
   --accent-color: #6d6c70;
-  --card-color: #3C3B3D;
+  --card-color: #3c3b3d;
+  --top-card-color: #282828;
   --buttonHover-color: #4c4c4e;
   --buttonText-color: #f2f2f2;
-  --error-color: #FD4C4B;
+  --error-color: #fd4c4b;
 }
 
-[data-theme='light-mode'] {
+[data-theme="light-mode"] {
   --primary-color: #f2f2f2;
   --secondary-color: #1e1e1f;
   --accent-color: #6d6c70;
-  --card-color: #E0E0E0;
-  --buttonText-color:#1e1e1f;
-  --buttonHover-color: #C6C6C6;
-  --error-color: #FD4C4B;
+  --card-color: #e0e0e0;
+  --top-card-color: #e4e4e4;
+  --buttonText-color: #1e1e1f;
+  --buttonHover-color: #c6c6c6;
+  --error-color: #fd4c4b;
 }
+
+// [data-theme="aspidBlue-mode"] {
+//   --primary-color: #5353CD;
+//   --secondary-color: #f2f2f2;
+//   --accent-color: #E0E0E0;
+//   --card-color: #e0e0e0;
+//   --top-card-color: #e4e4e4;
+//   --buttonText-color: #1e1e1f;
+//   --buttonHover-color: #c6c6c6;
+//   --error-color: #fd4c4b;
+// }
+// [data-theme="aspidBlue-mode"] body {
+//   background-image: url(../public/bg.svg);
+//   background-repeat: no-repeat;
+//   background-position: center center;
+//   background-size: cover;
+// }
 
 body {
   background: var(--primary-color);
@@ -44,10 +63,20 @@ a {
   flex: 1 1 auto;
 }
 
+.center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
 .wrapper {
   width: 100%;
   max-width: 1180px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
+  z-index: 1;
 }

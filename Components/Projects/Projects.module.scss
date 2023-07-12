@@ -1,19 +1,18 @@
 .projects {
-  row-gap: 42px;
-  margin: 8.1vh auto;
-  display: grid;
-  grid-template-columns: repeat(6, 180px);
-  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  justify-content: center;
 
-  @media (max-width: 1180px) {
-    grid-template-columns: repeat(4, 180px);
-    justify-content: space-around;
-    margin: 100px 0;
+  @media (max-width: 1440px) {
+    justify-content: normal;
   }
 
-  @media (max-width: 800px) {
-    grid-template-columns: repeat(2, 180px);
-    justify-content: space-evenly;
-    margin: 100px 0;
+  @media (max-width: 425px) {
+    margin-top: 100vh;
+    justify-content: center;
+  }
+  @media (max-width: 1024px) {
+    justify-content: center;
   }
 }

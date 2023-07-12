@@ -8,7 +8,7 @@ import { ThemeProvider } from "next-themes";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <ThemeProvider>
+      <ThemeProvider disableTransitionOnChange defaultTheme = 'system' themes={['aspidBlue-mode']}>
         <SessionProvider>
           <Header />
           <div className="main">
