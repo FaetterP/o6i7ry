@@ -25,7 +25,7 @@ export default function Logo() {
   return (
     <Link href="/">
       {logoSrc && (
-        <Image src={logoSrc} alt="Logo" width={112.5} height={34.5} />
+        <Image src={logoSrc} alt="Logo" width={112} height={34} />
       )}
     </Link>
   );

@@ -3,12 +3,14 @@ import { useTheme } from "next-themes";
 import styles from "./SwitchLight.module.scss";
 
 export default function SwitchLight() {
-  const {theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
+  const [clickCount, setClickCount] = useState(0);
 
   useEffect(() => {
     setMounted(true);
   }, []);
+
   if (!mounted) {
     return null;
   }
@@ -19,6 +21,10 @@ export default function SwitchLight() {
     } else {
       setTheme("dark-mode");
     }
+    setClickCount((prevCount) => prevCount + 1);
+    if ((clickCount + 1) % 10 === 0 && theme !== "aspidBlue-mode") {
+      setTheme("aspidBlue-mode");
+    }
   };
 
   return (
@@ -28,4 +34,4 @@ export default function SwitchLight() {
       </span>
     </ul>
   );
-};
+}

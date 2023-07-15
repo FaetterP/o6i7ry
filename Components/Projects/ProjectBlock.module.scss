@@ -1,9 +1,9 @@
 .cardHolder {
   background: var(--card-color);
-  border-radius: 9px;
   width: 208px;
   height: 230px;
   transition: all 0.4s ease;
+  border-radius: 9px 9px 9px 9px;
 
   img {
     display: flex;
@@ -16,6 +16,7 @@
 .imageContainer {
   transition: all 0.4s ease;
   background: var(--top-card-color);
+  border-radius: 9px 9px 0px 0px;
 }
 
 .textContainer {

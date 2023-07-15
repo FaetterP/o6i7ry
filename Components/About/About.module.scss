@@ -1,4 +1,5 @@
 .textContainer {
+  width: 522px;
   h1 {
     color: var(--secondary-color);
     font-family: Montserrat;
@@ -9,7 +10,6 @@
     margin-bottom: 13px;
   }
   h2 {
-    width: 522px;
     color: var(--accent-color);
     font-size: 16px;
     font-weight: 400;
@@ -17,12 +17,38 @@
   }
 }
 
-.imageContainer{
-    margin-left: 194px;
-}
+.parentContainer {
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 
-.aboutContainer{
-    margin: 19.30vh auto;
-    display: flex;
-    align-items: center;
+  @media (max-width: 854px) {
+    text-align: center;
+    justify-content: center;
+  }
+  @media (max-width: 425px) {
+    justify-content: flex-end;
+  }
+  @media (max-width: 425px) {
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  @media (max-width: 768px) {
+    img {
+      margin-top: 0px;
+    }
+  }
+  @media (max-width: 425px) {
+    img {
+      margin-top: 15px;
+    }
+  }
+  @media (max-width: 375px) {
+    img {
+      margin-top: 20px;
+    }
+  }
 }

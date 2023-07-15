@@ -1,8 +1,14 @@
 .headerContainer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding: 25px 0;
+  padding: 25px 0 0 0;
   align-items: center;
+  @media (max-width: 640px) {
+    display: none;
+  }
+  @media (max-width: 1280px) {
+    padding: 25px 0 25px 0;
+  }
 }
 
 .navContainer {
@@ -11,13 +17,26 @@
   text-align: center;
 }
 
-.switchLightContainer {
-  display: block;
-  text-align: right;
-}
-
 .logo {
   display: block;
   outline: none;
   align-items: start;
+}
+
+.mobileContainer {
+  display: none;
+  padding: 25px 0 25px 0;
+
+  @media (max-width: 640px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  @media (max-width: 425px) {
+    padding: 25px 0 25px 0;
+  }
 }

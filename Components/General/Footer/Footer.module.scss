@@ -3,9 +3,13 @@
   font-size: 16px;
   font-family: Montserrat;
   font-weight: 300;
-
   * {
     text-align: center;
     margin: 0 auto 25px;
+  }
+  @media (max-width: 1463px) {
+    * {
+      margin: 25px auto 25px;
+    }
   }
 }
