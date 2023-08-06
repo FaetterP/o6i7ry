@@ -1,18 +1,15 @@
 .textContainer {
-  width: 621px;
+  width: 620px;
   display: flex;
+  flex-wrap: wrap;
   text-align: center;
-  flex-direction: column;
-  margin: auto;
-  margin-top: 14.5vh;
+  justify-content: center;
 
   h1 {
     color: var(--secondary-color);
     font-family: Montserrat;
     font-size: 36px;
-    font-style: normal;
     font-weight: 800;
-    line-height: normal;
     margin-bottom: 40px;
   }
 
@@ -20,22 +17,31 @@
     color: var(--accent-color);
     font-family: Montserrat;
     font-size: 20px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
+  }
+  @media (max-width: 624px) {
+    width: 350px;
+  }
+  @media (max-width: 320px) {
+    width: 300px;
   }
 }
 
-.inputContainer {
-  margin: auto;
-  margin-top: 85px;
+.parentContainer {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-  textarea {
-    resize: none;
+.inputContainer {
+  margin: 85px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  max-width: 580px;
+  justify-content: center;
+
+  input {
     border: none;
     border-bottom: 1px solid var(--accent-color);
     outline: none;
@@ -44,12 +50,7 @@
     color: var(--secondary-color);
     font-family: Montserrat;
     font-size: 14px;
-    font-style: normal;
     font-weight: 300;
-    overflow: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    
   }
 
   .textarea::-webkit-scrollbar {
@@ -60,14 +61,23 @@
     color: var(--accent-color);
     font-family: Montserrat;
     font-size: 14px;
-    font-style: normal;
     font-weight: 300;
     text-align: left;
-    
   }
 
   .textarea.message {
     padding-bottom: 40px;
+  }
+
+  @media (max-width: 624px) {
+    textarea {
+      width: 350px;
+    }
+  }
+  @media (max-width: 320px) {
+    textarea {
+      width: 300px;
+    }
   }
 }
 
@@ -80,9 +90,7 @@
   color: var(--buttonText-color);
   font-family: Montserrat;
   font-size: 32px;
-  font-style: normal;
   font-weight: 800;
-  line-height: normal;
   margin-top: 90px;
   touch-action: manipulation;
   transition: all 0.3s;
@@ -103,9 +111,7 @@
   color: var(--accent-color);
   font-family: Montserrat;
   font-size: 14px;
-  font-style: normal;
   font-weight: 200;
-  line-height: normal;
   text-align: right;
 }
 

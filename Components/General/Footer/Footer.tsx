@@ -2,10 +2,10 @@ import styles from "./Footer.module.scss";
 
 export default function Footer() {
   return (
-    <>
-      <footer className={styles.footer}>
+    <footer>
+      <div className={styles.footer}>
         <div>design by souliriss</div>
-      </footer>
-    </>
+      </div>
+    </footer>
   );
 }

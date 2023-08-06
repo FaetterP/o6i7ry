@@ -1,28 +1,41 @@
 .textContainer {
+  width: 522px;
   h1 {
     color: var(--secondary-color);
     font-family: Montserrat;
     font-size: 36px;
-    font-style: normal;
     font-weight: 900;
-    line-height: normal;
     margin-bottom: 13px;
   }
   h2 {
-    width: 522px;
     color: var(--accent-color);
     font-size: 16px;
     font-weight: 400;
     font-family: Montserrat;
   }
 }
-
-.imageContainer{
-    margin-left: 194px;
+.imageContainer {
+  position: relative;
+  width: 455px;
+  height: 455px;
+  img {
+    aspect-ratio: 1/1;
+  }
 }
-
-.aboutContainer{
-    margin: 19.30vh auto;
-    display: flex;
-    align-items: center;
+.parentContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  @media (max-width: 976px) {
+    justify-content: center;
+    text-align: center;
+  }
+  @media (max-width: 854px) {
+    text-align: center;
+    justify-content: center;
+  }
+  @media (max-width: 425px) {
+    justify-content: flex-end;
+  }
 }

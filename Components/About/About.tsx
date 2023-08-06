@@ -4,6 +4,8 @@ import styles from "./About.module.scss";
 import Image, { StaticImageData } from "next/image";
 import lightImage from "../../public/lightImage.svg";
 import darkImage from "../../public/darkImage.svg";
+import aspidBlueImage from "../../public/aspidBlueImage.svg";
+import { ASPIDBLUE_THEME_NAME, LIGHT_THEME_NAME } from "utils/constants";
 
 export default function About() {
   const { resolvedTheme } = useTheme();
@@ -13,7 +15,10 @@ export default function About() {
 
   useEffect(() => {
     switch (resolvedTheme) {
-      case "light-mode":
+      case ASPIDBLUE_THEME_NAME:
+        setImageSrc(aspidBlueImage);
+        break;
+      case LIGHT_THEME_NAME:
         setImageSrc(lightImage);
         break;
       default:
@@ -24,7 +29,7 @@ export default function About() {
 
   return (
     <div className="wrapper">
-      <div className={styles.aboutContainer}>
+      <div className={styles.parentContainer}>
         <div className={styles.textContainer}>
           <h1>Hello!</h1>
           <h2>
@@ -38,9 +43,7 @@ export default function About() {
           </h2>
         </div>
         <div className={styles.imageContainer}>
-          {imageSrc && (
-            <Image src={imageSrc} alt="Stone" width={460} height={413} />
-          )}
+          {imageSrc ? <Image src={imageSrc} alt="Stone" fill/> : <></>}
         </div>
       </div>
     </div>

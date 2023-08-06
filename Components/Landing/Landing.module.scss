@@ -1,12 +1,10 @@
-.centerBlock {
-  width: 543px;
-  margin: auto;
-  margin-top: 30vh;
+.landing {
+  width: 544px;
   text-align: center;
 
   h1 {
     color: var(--secondary-color);
-    margin-bottom: 13px;
+    margin-bottom: 12px;
     font-size: 36px;
     font-family: Montserrat;
     font-weight: 900;
@@ -19,4 +17,10 @@
     font-weight: 400;
     font-family: Montserrat;
   }
+}
+
+.parentContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

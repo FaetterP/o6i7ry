@@ -2,9 +2,9 @@ import styles from "./Landing.module.scss";
 
 export default function Landing() {
   return (
-    <>
       <div className="wrapper">
-          <div className={styles.centerBlock}>
+        <div className={styles.parentContainer}>
+          <div className={styles.landing}>
             <div>
               <h1>Welcome to the club buddy</h1>
               <h2>
@@ -19,6 +19,6 @@ export default function Landing() {
             </div>
           </div>
         </div>
-    </>
+      </div>
   );
 }

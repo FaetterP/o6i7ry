@@ -1,23 +1,39 @@
 @import "material-icons/iconfont/material-icons.scss";
 
-:root{
-  --primary-color: #1e1e1f;
-  --secondary-color: #f2f2f2;
-  --accent-color: #6d6c70;
-  --card-color: #3C3B3D;
-  --buttonHover-color: #4c4c4e;
-  --buttonText-color: #f2f2f2;
-  --error-color: #FD4C4B;
+:root {
+  --primary-color: hsl(240, 2%, 12%);
+  --secondary-color: hsl(0, 0%, 95%);
+  --accent-color: hsl(255, 2%, 43%);
+  --card-color: hsl(270, 2%, 24%);
+  --top-card-color: hsl(0, 0%, 16%);
+  --buttonHover-color: hsl(240, 1%, 30%);
+  --buttonText-color: hsl(0, 0%, 95%);
+  --error-color: hsl(0, 98%, 64%);
 }
 
-[data-theme='light-mode'] {
-  --primary-color: #f2f2f2;
-  --secondary-color: #1e1e1f;
-  --accent-color: #6d6c70;
-  --card-color: #E0E0E0;
-  --buttonText-color:#1e1e1f;
-  --buttonHover-color: #C6C6C6;
-  --error-color: #FD4C4B;
+[data-theme="light-mode"] {
+  --primary-color: hsl(0, 0%, 95%);
+  --secondary-color: hsl(240, 2%, 12%);
+  --accent-color: hsl(255, 2%, 43%);
+  --card-color: hsl(0, 0%, 88%);
+  --top-card-color: hsl(0, 0%, 89%);
+  --buttonText-color: hsl(240, 2%, 12%);
+  --buttonHover-color: hsl(0, 0%, 78%);
+  --error-color: hsl(0, 98%, 64%);
+}
+
+[data-theme="aspidBlue-mode"] {
+  --primary-color: #5353cd;
+  --secondary-color: hsl(0, 0%, 95%);
+  --accent-color: hsl(0, 0%, 88%);
+  --card-color: hsl(0, 0%, 88%);
+  --top-card-color: hsl(0, 0%, 89%);
+  --buttonText-color: hsl(240, 2%, 12%);
+  --buttonHover-color: hsl(0, 0%, 78%);
+  --error-color: hsl(0, 98%, 64%);
+}
+[data-theme="aspidBlue-mode"] body {
+  background: url(/bg.svg) center/cover no-repeat;
 }
 
 body {
@@ -40,14 +56,23 @@ a {
   flex-direction: column;
 }
 
-.main {
+*,
+:after,
+:before {
+  box-sizing: border-box;
+}
+
+.middle {
   flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .wrapper {
   width: 100%;
   max-width: 1180px;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0px auto;
   position: relative;
+  z-index: 1;
 }

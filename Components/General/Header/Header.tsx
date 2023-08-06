@@ -2,26 +2,31 @@ import HeaderNavButton from "./Button";
 import styles from "./Header.module.scss";
 import Logo from "./Logo";
 import SwitchLight from "./SwitchLight";
+import Image from "next/image";
+import hamburgerMenu from "../../../public/HamburgerMenu.svg";
 
 export default function Header() {
   return (
-    <>
-      <header className="wrapper">
-        <ul className={styles.headerContainer}>
-          <ul>
-            <Logo />
-          </ul>
-          <ul className={styles.navContainer}>
-            <HeaderNavButton title="Home" link="/" />
-            <HeaderNavButton title="Projects" link="/projects" />
-            <HeaderNavButton title="About" link="/about" />
-            <HeaderNavButton title="Contact" link="/contact" />
-          </ul>
-          <ul className={styles.switchLightContainer}>
+    <header>
+      <nav>
+        <div className="wrapper">
+          <ul className={styles.headerContainer}>
+            <ul className={styles.mobileContainer}>
+              <Image src={hamburgerMenu} alt="hamburgerMenu" width={25} height={25}/>
+            </ul>
+            <ul className={styles.logo}>
+              <Logo />
+            </ul>
+            <ul className={styles.navContainer}>
+              <HeaderNavButton title="Home" link="/" />
+              <HeaderNavButton title="Projects" link="/projects" />
+              <HeaderNavButton title="About" link="/about" />
+              <HeaderNavButton title="Contact" link="/contact" />
+            </ul>
             <SwitchLight />
           </ul>
-        </ul>
-      </header>
-    </>
+        </div>
+      </nav>
+    </header>
   );
 }

@@ -1,8 +1,11 @@
 .switchLight {
-  color: var(--secondary-color);
-  
-  span{
+  text-align: right;
+  button{
+    color: var(--secondary-color);
     cursor: pointer;
     user-select: none;
+    background-color: transparent;
+    outline: none;
+    border: none;
   }
 }

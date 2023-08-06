@@ -12,6 +12,18 @@ export default function ProjectsPage(
 }
 
 export async function getServerSideProps() {
-  const projects = await getProjects();
+  // const projects = await getProjects();
+  const projects = [
+    { name: "", urlName: "", type: "", icon: "" },
+    { name: "", urlName: "", type: "", icon: "" },
+    { name: "", urlName: "", type: "", icon: "" },
+    { name: "", urlName: "", type: "", icon: "" },
+    { name: "", urlName: "", type: "", icon: "" },
+    { name: "", urlName: "", type: "", icon: "" },
+    { name: "", urlName: "", type: "", icon: "" },
+    { name: "", urlName: "", type: "", icon: "" },
+    { name: "", urlName: "", type: "", icon: "" },
+    { name: "", urlName: "", type: "", icon: "" },
+  ];
   return { props: { projects } };
 }
