@@ -11,6 +11,9 @@ export default function Header() {
       <nav>
         <div className="wrapper">
           <ul className={styles.headerContainer}>
+            <ul className={styles.mobileContainer}>
+              <Image src={hamburgerMenu} alt="hamburgerMenu" width={25} height={25}/>
+            </ul>
             <ul className={styles.logo}>
               <Logo />
             </ul>
@@ -22,13 +25,6 @@ export default function Header() {
             </ul>
             <SwitchLight />
           </ul>
-          <div className="parentContainer">
-            <ul className={styles.mobileContainer}>
-              <Image src={hamburgerMenu} alt="hamburgerMenu" width={25} height={25}></Image>
-              <Logo />
-              <SwitchLight />
-            </ul>
-          </div>
         </div>
       </nav>
     </header>

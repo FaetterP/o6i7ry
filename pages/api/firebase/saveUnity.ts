@@ -2,8 +2,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/react";
 import { saveUnityTutorial } from "services/firebase";
 import { CommonApiResponse } from "types/api";
-import { HttpError } from "utils.ts/HttpError";
-import { errorResponse, successResponse } from "utils.ts/responses";
+import { HttpError } from "utils/HttpError";
+import { errorResponse, successResponse } from "utils/responses";
 
 type BodyType = {
   page: string;

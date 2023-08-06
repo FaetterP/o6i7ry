@@ -4,6 +4,7 @@ import darkLogo from "../../../public/darkLogo.svg";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { LIGHT_THEME_NAME } from "utils/constants";
 
 export default function Logo() {
   const { resolvedTheme } = useTheme();
@@ -13,7 +14,7 @@ export default function Logo() {
 
   useEffect(() => {
     switch (resolvedTheme) {
-      case "light-mode":
+      case LIGHT_THEME_NAME:
         setImageSrc(darkLogo);
         break;
       default:
@@ -24,8 +25,10 @@ export default function Logo() {
 
   return (
     <Link href="/">
-      {logoSrc && (
+      {logoSrc ? (
         <Image src={logoSrc} alt="Logo" width={112} height={34} />
+      ) : (
+        <></>
       )}
     </Link>
   );

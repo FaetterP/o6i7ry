@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import styles from "./SwitchLight.module.scss";
+import { ASPIDBLUE_THEME_NAME, DARK_THEME_NAME, LIGHT_THEME_NAME } from "utils/constants";
 
 export default function SwitchLight() {
   const { theme, setTheme } = useTheme();
@@ -16,22 +17,22 @@ export default function SwitchLight() {
   }
 
   const toggleTheme = () => {
-    if (theme === "dark-mode") {
-      setTheme("light-mode");
+    if (theme === DARK_THEME_NAME) {
+      setTheme(LIGHT_THEME_NAME);
     } else {
-      setTheme("dark-mode");
+      setTheme(DARK_THEME_NAME);
     }
     setClickCount((prevCount) => prevCount + 1);
-    if ((clickCount + 1) % 10 === 0 && theme !== "aspidBlue-mode") {
-      setTheme("aspidBlue-mode");
+    if ((clickCount + 1) % 25 === 0 && theme !== ASPIDBLUE_THEME_NAME) {
+      setTheme(ASPIDBLUE_THEME_NAME);
     }
   };
 
   return (
     <ul className={styles.switchLight}>
-      <span className="material-symbols-outlined" onClick={toggleTheme}>
-        {theme === "dark-mode" ? "dark_mode" : "light_mode"}
-      </span>
+      <button className="material-symbols-outlined" onClick={toggleTheme}>
+        {theme === DARK_THEME_NAME ? "dark_mode" : "light_mode"}
+      </button>
     </ul>
   );
 }

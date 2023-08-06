@@ -1,7 +1,7 @@
 import { FirebaseApp, initializeApp } from "firebase/app";
 import { getDatabase, ref, get, child, set } from "firebase/database";
 import config from "config";
-import { HttpError } from "utils.ts/HttpError";
+import { HttpError } from "utils/HttpError";
 import { Project } from "types/general";
 
 type FirebaseConfig = {

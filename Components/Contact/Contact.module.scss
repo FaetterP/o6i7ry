@@ -1,5 +1,5 @@
 .textContainer {
-  width: 621px;
+  width: 620px;
   display: flex;
   flex-wrap: wrap;
   text-align: center;
@@ -9,9 +9,7 @@
     color: var(--secondary-color);
     font-family: Montserrat;
     font-size: 36px;
-    font-style: normal;
     font-weight: 800;
-    line-height: normal;
     margin-bottom: 40px;
   }
 
@@ -19,32 +17,31 @@
     color: var(--accent-color);
     font-family: Montserrat;
     font-size: 20px;
-    font-style: normal;
     font-weight: 400;
-    line-height: normal;
   }
-  @media (max-width: 512px){
+  @media (max-width: 624px) {
     width: 350px;
+  }
+  @media (max-width: 320px) {
+    width: 300px;
   }
 }
 
-.parentContainer{
+.parentContainer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 
 .inputContainer {
-  margin: auto;
-  margin-top: 85px;
+  margin: 85px auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 25px;
   max-width: 580px;
   justify-content: center;
 
-  textarea {
-    resize: none;
+  input {
     border: none;
     border-bottom: 1px solid var(--accent-color);
     outline: none;
@@ -53,12 +50,7 @@
     color: var(--secondary-color);
     font-family: Montserrat;
     font-size: 14px;
-    font-style: normal;
     font-weight: 300;
-    overflow: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    
   }
 
   .textarea::-webkit-scrollbar {
@@ -69,19 +61,22 @@
     color: var(--accent-color);
     font-family: Montserrat;
     font-size: 14px;
-    font-style: normal;
     font-weight: 300;
     text-align: left;
-    
   }
 
   .textarea.message {
     padding-bottom: 40px;
   }
 
-  @media (max-width: 512px){
-    textarea{
+  @media (max-width: 624px) {
+    textarea {
       width: 350px;
+    }
+  }
+  @media (max-width: 320px) {
+    textarea {
+      width: 300px;
     }
   }
 }
@@ -95,9 +90,7 @@
   color: var(--buttonText-color);
   font-family: Montserrat;
   font-size: 32px;
-  font-style: normal;
   font-weight: 800;
-  line-height: normal;
   margin-top: 90px;
   touch-action: manipulation;
   transition: all 0.3s;
@@ -118,9 +111,7 @@
   color: var(--accent-color);
   font-family: Montserrat;
   font-size: 14px;
-  font-style: normal;
   font-weight: 200;
-  line-height: normal;
   text-align: right;
 }
 

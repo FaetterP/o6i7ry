@@ -15,9 +15,9 @@ export default function ProjectPreview(props: PropsType) {
           <Image src={props.src} alt={props.title} width={180} height={180} />
         </div>
         <div className={styles.textContainer}>
-          <h2 title={props.title}>{props.title}</h2>{" "}
+          <h2 title={props.title}>{props.title}</h2>
           <h1>
-            {"//"}
+            {"// "}
             {props.type}
           </h1>
         </div>

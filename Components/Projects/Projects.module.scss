@@ -2,17 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   gap: 35px;
-
-  @media (max-width: 1111111px) {
-    justify-content: normal;
-  }
-
-  @media (max-width: 1024px) {
+  justify-content: normal;
+  
+  @media (max-width: 1180px) {
     justify-content: center;
-  }
-
-  @media (max-width: 425px) {
-    gap: 9px;
   }
 
 }

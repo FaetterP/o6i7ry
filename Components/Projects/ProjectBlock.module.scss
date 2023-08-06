@@ -3,10 +3,9 @@
   width: 208px;
   height: 230px;
   transition: all 0.4s ease;
-  border-radius: 9px 9px 9px 9px;
-
+  border-radius: 9px;
+  
   img {
-    display: flex;
     width: 208px;
     height: 194px;
     border-radius: 9px 9px 0px 0px;
@@ -14,9 +13,11 @@
 }
 
 .imageContainer {
+  border-radius: 9px 9px 0px 0px;
+  width: 208px;
+  height: 194px;
   transition: all 0.4s ease;
   background: var(--top-card-color);
-  border-radius: 9px 9px 0px 0px;
 }
 
 .textContainer {
@@ -28,7 +29,6 @@
     color: var(--secondary-color);
     font-family: Montserrat;
     font-size: 13px;
-    font-style: normal;
     font-weight: 500;
     white-space: nowrap;
     overflow: hidden;
@@ -38,19 +38,15 @@
     color: var(--secondary-color);
     font-family: Montserrat;
     font-size: 13px;
-    font-style: normal;
     font-weight: 300;
     white-space: nowrap;
-    overflow: hidden;
     text-overflow: ellipsis;
   }
 }
 
 .cardHolder:hover {
   background: var(--buttonHover-color);
-  transform: scale(102%);
-  user-select: none;
-  -webkit-user-select: none;
+  scale: 102%;
   h2 {
     color: var(--secondary-color);
   }
