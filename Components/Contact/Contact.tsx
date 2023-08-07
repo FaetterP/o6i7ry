@@ -39,7 +39,7 @@ export default function Contact() {
               name="name"
               onChange={formik.handleChange}
               value={formik.values.name}
-              className={styles.textarea}
+              className={`${styles.input} ${styles.text}`}
               placeholder="name"
               maxLength={100}
             />
@@ -50,24 +50,22 @@ export default function Contact() {
               name="email"
               onChange={formik.handleChange}
               value={formik.values.email}
-              className={styles.textarea}
+              className={`${styles.input} ${styles.email}`}
               placeholder="email"
               maxLength={100}
             />
             <input
-              type="text"
               inputMode="text"
               autoComplete="text"
               name="subject"
               onChange={formik.handleChange}
               value={formik.values.subject}
-              className={styles.textarea}
+              className={`${styles.input} ${styles.subject}`}
               placeholder="subject"
               maxLength={100}
             />
             <div>
-              <input
-                type="text"
+              <textarea
                 inputMode="text"
                 autoComplete="text"
                 name="message"
@@ -77,7 +75,7 @@ export default function Contact() {
                   formik.setFieldValue("message", message);
                 }}
                 value={formik.values.message}
-                className={`${styles.textarea} ${styles.message}`}
+                className={`${styles.input} ${styles.message}`}
                 placeholder="message"
                 maxLength={1000}
               />

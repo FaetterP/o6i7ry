@@ -41,6 +41,22 @@
   max-width: 580px;
   justify-content: center;
 
+  textarea {
+    resize: none;
+    border: none;
+    border-bottom: 1px solid var(--accent-color);
+    outline: none;
+    background: transparent;
+    width: 580px;
+    color: var(--secondary-color);
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 300;
+  }
+  textarea::-webkit-scrollbar {
+    display: none;
+  }
+
   input {
     border: none;
     border-bottom: 1px solid var(--accent-color);
@@ -53,11 +69,7 @@
     font-weight: 300;
   }
 
-  .textarea::-webkit-scrollbar {
-    display: none;
-  }
-
-  textarea::placeholder {
+  input::placeholder {
     color: var(--accent-color);
     font-family: Montserrat;
     font-size: 14px;
@@ -65,16 +77,32 @@
     text-align: left;
   }
 
-  .textarea.message {
+  input.subject {
+    padding-bottom: 9px;
+  }
+  input.text {
+    padding-bottom: 9px;
+  }
+  input.email {
+    padding-bottom: 9px;
+  }
+
+  textarea.message {
     padding-bottom: 40px;
   }
 
   @media (max-width: 624px) {
+    input {
+      width: 350px;
+    }
     textarea {
       width: 350px;
     }
   }
-  @media (max-width: 320px) {
+  @media (max-width: 370px) {
+    input {
+      width: 300px;
+    }
     textarea {
       width: 300px;
     }
@@ -83,15 +111,14 @@
 
 .button {
   border: none;
+  padding: 11px 48px;
   background-color: var(--card-color);
   border-radius: 8px;
-  width: 297px;
-  min-height: 61px;
   color: var(--buttonText-color);
   font-family: Montserrat;
   font-size: 32px;
   font-weight: 800;
-  margin-top: 90px;
+  margin-top: 88px;
   touch-action: manipulation;
   transition: all 0.3s;
   user-select: none;
