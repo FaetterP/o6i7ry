@@ -76,3 +76,8 @@ a {
   position: relative;
   z-index: 1;
 }
+
+input:-internal-autofill-selected {
+  -webkit-text-fill-color: red !important;
+  background-clip: text !important;
+}
