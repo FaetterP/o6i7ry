@@ -30,7 +30,8 @@
     "remark-gfm": "^3.0.1",
     "shortid": "^2.2.16",
     "typescript": "4.9.5",
-    "use-image": "^1.1.0"
+    "use-image": "^1.1.0",
+    "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/config": "^3.3.0",
