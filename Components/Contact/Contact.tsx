@@ -1,8 +1,20 @@
 import { useFormik } from "formik";
 import styles from "./Contact.module.scss";
 import axios from "axios";
+import * as Yup from "yup";
 
 export default function Contact() {
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Имя обязательно для заполнения"),
+    email: Yup.string()
+      .email("Введите корректный email")
+      .required("Email обязателен для заполнения"),
+    subject: Yup.string().required("Тема обязательна для заполнения"),
+    message: Yup.string()
+      .required("Сообщение обязательно для заполнения")
+      .max(1000, "Сообщение не должно превышать 1000 символов"),
+  });
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -10,12 +22,17 @@ export default function Contact() {
       subject: "",
       message: "",
     },
-    onSubmit: async (values) => {
+    validationSchema: validationSchema,
+    onSubmit: async (values, { setSubmitting }) => {
       try {
-        const response = await axios.post("/api/mail/send", values);
-        console.log(response);
+        if (formik.isValid) {
+          const response = await axios.post("/api/mail/send", values);
+          console.log(response);
+        }
       } catch (error) {
         console.error(error);
+      } finally {
+        setSubmitting(false);
       }
     },
   });
