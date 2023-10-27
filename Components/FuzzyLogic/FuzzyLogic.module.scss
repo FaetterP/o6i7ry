@@ -1,0 +1,37 @@
+.fuzzyLogicGuide {
+  > span {
+    display: block;
+    margin: 10px;
+    color: var(--secondary-color);
+  }
+
+  hr {
+    margin: 30px 0;
+    height: 4px;
+    background: var(--secondary-color);
+  }
+
+  ul {
+    color: var(--secondary-color);
+  }
+
+  table {
+    margin: 10px;
+
+    border-collapse: collapse;
+    border: 1px solid var(--secondary-color);
+
+    td {
+      padding: 10px;
+      border: 1px solid var(--secondary-color);
+
+      color: var(--secondary-color);
+    }
+    th {
+      padding: 10px;
+      border: 1px solid var(--secondary-color);
+
+      color: var(--secondary-color);
+    }
+  }
+}

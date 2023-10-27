@@ -24,6 +24,7 @@
     "next-themes": "^0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-katex": "^3.0.1",
     "react-konva": "^18.0.0-0",
     "react-markdown": "^8.0.7",
     "react-syntax-highlighter": "^15.5.0",
@@ -38,6 +39,7 @@
     "@types/node": "18.13.0",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
+    "@types/react-katex": "^3.0.2",
     "@types/react-syntax-highlighter": "^15.5.6",
     "@types/shortid": "^0.0.29",
     "sass": "^1.58.3"
