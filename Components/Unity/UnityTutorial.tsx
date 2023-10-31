@@ -9,7 +9,7 @@ type PropsType = {
 
 export default function UnityTutorial(props: PropsType) {
   return (
-    <>
+    <div className="wrapper">
       <div className={styles.tutorial}>
         <Tutorial content={props.content} />
       </div>
@@ -41,6 +41,6 @@ export default function UnityTutorial(props: PropsType) {
       ) : (
         <></>
       )}
-    </>
+    </div>
   );
 }
