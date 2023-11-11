@@ -1,10 +1,12 @@
 import ImageComparison from "Components/General/ImageComparison/ImageComparison";
-import ChooseBranch from "./ChooseBanch";
+import ChooseBranch from "./ChooseBranch";
 import FilesDisplay from "./FilesDisplay";
 import PathDisplay from "./PathDisplay";
+import styles from "./Files.module.scss";
 
 type PropsType = {
   path: string[];
+  currentFile?: string;
 
   files?: { name: string; type: string; isCanTransition: boolean }[];
   filesOriginal?: {
@@ -24,8 +26,8 @@ export default function Files(props: PropsType) {
   return (
     <>
       <div>
-        <div style={{ display: "flex" }}>
-          <div style={{ height: "100px", position: "sticky", top: "0" }}>
+        <div className={styles.main}>
+          <div className={styles.path}>
             <ChooseBranch />
             <PathDisplay pathPieces={props.path} />
             <ImageComparison
@@ -33,8 +35,17 @@ export default function Files(props: PropsType) {
               imageOriginalBase64={props.texture16!}
             />
           </div>
-          <FilesDisplay files={props.files!} />
-          <FilesDisplay files={props.filesOriginal!} />
+
+          <div className={styles.filesColumns}>
+            <FilesDisplay
+              files={props.files!}
+              currentFile={props.currentFile}
+            />
+            <FilesDisplay
+              files={props.filesOriginal!}
+              currentFile={props.currentFile}
+            />
+          </div>
         </div>
       </div>
     </>

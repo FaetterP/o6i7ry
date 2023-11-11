@@ -67,6 +67,7 @@ export async function getServerSideProps(
   return {
     props: JSON.parse(
       JSON.stringify({
+        currentFile: imageName,
         path: pathPieces,
         files,
         filesOriginal,

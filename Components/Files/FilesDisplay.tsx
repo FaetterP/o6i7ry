@@ -3,10 +3,11 @@ import styles from "./FilesDisplay.module.scss";
 import shortid from "shortid";
 
 type PropsType = {
+  currentFile?: string;
   files: { name: string; type: string; isCanTransition: boolean }[];
 };
 
-export default function FilesDisplay({ files }: PropsType) {
+export default function FilesDisplay({ files, currentFile }: PropsType) {
   const router = useRouter();
 
   function goToPath(addedPath: string, isCanTransition: boolean) {
@@ -17,10 +18,7 @@ export default function FilesDisplay({ files }: PropsType) {
     let newPathPieces: string[] = [addedPath];
     const queryPath = router.query.path;
     if (queryPath) {
-      if (
-        Array.isArray(queryPath) &&
-        queryPath.at(-1)!.endsWith(".png")
-      ) {
+      if (Array.isArray(queryPath) && queryPath.at(-1)!.endsWith(".png")) {
         queryPath.pop();
       }
       newPathPieces = [queryPath, addedPath].flat();
@@ -41,7 +39,13 @@ export default function FilesDisplay({ files }: PropsType) {
       <div className={styles.filesBlock}>
         {files.map((item) => (
           <div
-            className={styles[item.type]}
+            className={`${styles[item.type]} ${
+              currentFile &&
+              currentFile.endsWith(".png") &&
+              currentFile === item.name
+                ? styles.selected
+                : ""
+            }`}
             key={getKey(item.name)}
             onClick={() => goToPath(item.name, item.isCanTransition)}
           >
