@@ -3,7 +3,7 @@ import { getSession } from "next-auth/react";
 import { saveUnityTutorial } from "services/firebase";
 import { CommonApiResponse } from "types/api";
 import { HttpError } from "utils/HttpError";
-import { errorResponse, successResponse } from "utils/responses";
+import { errorResponse, successResponse } from "utils/httpUtils";
 
 type BodyType = {
   page: string;

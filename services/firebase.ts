@@ -129,3 +129,21 @@ export async function getOLN() {
   >("OLN/categories");
   return { categories };
 }
+
+export async function getOLNTextures(
+  branch: string,
+  path: string
+): Promise<[texture16: string, texture32: string]> {
+  connectToFirebase();
+  let texture16 = "";
+  let texture32 = "";
+
+  try {
+    texture16 = await getFileContent("OLN", branch, path);
+  } catch {}
+  try {
+    texture32 = await getFileContent("OLN", branch + "-orig", path);
+  } catch {}
+
+  return [texture16, texture32];
+}

@@ -18,3 +18,17 @@ export function errorResponse(
     res.status(error.httpCode).json({ status: "error", error: error.message });
   }
 }
+
+export function getPathPieces(
+  queryPath: string | string[] | undefined
+): string[] {
+  let pathPieces: string[] = [];
+  if (queryPath) {
+    if (Array.isArray(queryPath)) {
+      pathPieces = [...queryPath];
+    } else {
+      pathPieces = [queryPath];
+    }
+  }
+  return pathPieces;
+}
