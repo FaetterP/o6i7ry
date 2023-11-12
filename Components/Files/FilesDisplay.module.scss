@@ -1,14 +1,14 @@
 .filesBlock {
   margin: 0 10px;
+  width: 50%;
 
-  background: #302f31;
+  background: var(--top-card-color);
   border: 0.1px solid var(--accent-color);
   border-radius: 4px;
-  width: 50%;
   text-align: center;
 
   div:hover {
-    background-color: var(--accent-color);
+    background-color: var(--buttonHover-color);
   }
 }
 
@@ -30,4 +30,8 @@
 
 .undefinedType {
   color: brown;
+}
+
+.selected{
+  background-color: var(--accent-color);
 }

@@ -1,9 +1,9 @@
 .imageComparisonBlock {
-  width: 340px;
-  height: 340px;
+  width: 100%;
+  aspect-ratio: 1;
   margin: 10px;
 
-  background: #302f31;
+  background: var(--card-color);
   border: 0.1px solid var(--accent-color);
   border-radius: 4px;
 
@@ -19,7 +19,8 @@
   width: 38px;
   height: 38px;
 
-  background: #515053;
+  background: var(--accent-color);
+  opacity: 0.5;
   border: 0.2px solid #1e1e1f;
   border-radius: 5px;
 
@@ -28,10 +29,12 @@
   font-size: 20px;
   line-height: 24px;
   text-align: center;
-  color: var(--accent-color);
+  color: var(--secondary-color);
 
   cursor: pointer;
-}
-.changeViewToOriginalButton:hover {
-  background: var(--accent-color);
+
+  &:hover {
+    background: var(--buttonHover-color);
+    opacity: 1;
+  }
 }

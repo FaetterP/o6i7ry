@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.6",
+    "@uiw/react-md-editor": "^3.6.0",
     "axios": "^1.4.0",
     "canvas": "^2.11.2",
     "config": "^3.3.9",
