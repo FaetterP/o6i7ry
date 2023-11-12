@@ -1,11 +1,11 @@
 .pathBlock {
-  width: 380px;
+  width: 100%;
 
   h1 {
     margin: 10px;
     padding: 10px;
 
-    background-color: #302f31;
+    background-color: var(--card-color);
     border-radius: 10px;
 
     font-family: "Noto Sans";
@@ -13,10 +13,10 @@
     font-size: 20px;
     line-height: 15px;
 
-    color: var(--accent-color);
+    color: var(--secondary-color);
   }
 
   h1:hover {
-    background-color: #444444;
+    background-color: var(--buttonHover-color);
   }
 }

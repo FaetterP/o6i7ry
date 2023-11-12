@@ -1,10 +1,13 @@
 import ImageComparison from "Components/General/ImageComparison/ImageComparison";
-import ChooseBranch from "./ChooseBanch";
+import ChooseBranch from "./ChooseBranch";
 import FilesDisplay from "./FilesDisplay";
 import PathDisplay from "./PathDisplay";
+import styles from "./Files.module.scss";
+import { useEffect, useState } from "react";
 
 type PropsType = {
   path: string[];
+  currentFile?: string;
 
   files?: { name: string; type: string; isCanTransition: boolean }[];
   filesOriginal?: {
@@ -21,20 +24,52 @@ type PropsType = {
 };
 
 export default function Files(props: PropsType) {
+  const [texture16, setTexture16] = useState(props.texture16);
+  const [texture32, setTexture32] = useState(props.texture32);
+
+  useEffect(() => {
+    setTexture16(props.texture16);
+    setTexture32(props.texture32);
+  }, [props.texture16, props.texture32]);
+
+  function updateImage(texture16: string, texture32: string) {
+    setTexture16(texture16);
+    setTexture32(texture32);
+  }
+
   return (
     <>
       <div>
-        <div style={{ display: "flex" }}>
-          <div style={{ height: "100px", position: "sticky", top: "0" }}>
+        <div className={styles.main}>
+          <div className={styles.path}>
             <ChooseBranch />
             <PathDisplay pathPieces={props.path} />
             <ImageComparison
-              imageBase64={props.texture32!}
-              imageOriginalBase64={props.texture16!}
+              imageBase64={texture32!}
+              imageOriginalBase64={texture16!}
             />
           </div>
-          <FilesDisplay files={props.files!} />
-          <FilesDisplay files={props.filesOriginal!} />
+
+          <div className={styles.filesColumns}>
+            <FilesDisplay
+              updateImage={
+                props.currentFile && props.currentFile.endsWith(".png")
+                  ? updateImage
+                  : undefined
+              }
+              files={props.files!}
+              currentFile={props.currentFile}
+            />
+            <FilesDisplay
+              updateImage={
+                props.currentFile && props.currentFile.endsWith(".png")
+                  ? updateImage
+                  : undefined
+              }
+              files={props.filesOriginal!}
+              currentFile={props.currentFile}
+            />
+          </div>
         </div>
       </div>
     </>

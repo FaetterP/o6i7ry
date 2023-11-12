@@ -1,35 +1,50 @@
 import { useRouter } from "next/router";
 import styles from "./FilesDisplay.module.scss";
 import shortid from "shortid";
+import axios from "axios";
+import { useState } from "react";
 
 type PropsType = {
+  currentFile?: string;
   files: { name: string; type: string; isCanTransition: boolean }[];
+
+  updateImage?: (texture16: string, texture32: string) => void;
 };
 
-export default function FilesDisplay({ files }: PropsType) {
+export default function FilesDisplay(props: PropsType) {
   const router = useRouter();
+  const [currentFile, setCurrentFile] = useState(props.currentFile || "");
 
-  function goToPath(addedPath: string, isCanTransition: boolean) {
-    if (!isCanTransition) {
-      return;
-    }
-
+  async function updateImage(addedPath: string, isCanTransition: boolean) {
     let newPathPieces: string[] = [addedPath];
     const queryPath = router.query.path;
     if (queryPath) {
-      if (
-        Array.isArray(queryPath) &&
-        queryPath.at(-1)!.endsWith(".png")
-      ) {
+      if (Array.isArray(queryPath) && queryPath.at(-1)!.endsWith(".png")) {
         queryPath.pop();
       }
       newPathPieces = [queryPath, addedPath].flat();
     }
 
-    router.push({
-      pathname: router.asPath.split("?")[0],
-      query: { path: newPathPieces },
-    });
+    router.push(
+      {
+        pathname: router.asPath.split("?")[0],
+        query: { path: newPathPieces },
+      },
+      undefined,
+      props.updateImage ? { shallow: true } : {}
+    );
+
+    setCurrentFile(addedPath);
+    if (props.updateImage) {
+      const { data } = await axios.get<{
+        status: "ok";
+        data: [string, string];
+      }>("/api/firebase/OLN/getImage", {
+        params: { branch: router.query.branch, path: newPathPieces },
+      });
+
+      props.updateImage(data.data[0], data.data[1]);
+    }
   }
 
   function getKey(name: string): string {
@@ -39,11 +54,15 @@ export default function FilesDisplay({ files }: PropsType) {
   return (
     <>
       <div className={styles.filesBlock}>
-        {files.map((item) => (
+        {props.files.map((item) => (
           <div
-            className={styles[item.type]}
+            className={`${styles[item.type]} ${
+              currentFile.endsWith(".png") && currentFile === item.name
+                ? styles.selected
+                : ""
+            }`}
             key={getKey(item.name)}
-            onClick={() => goToPath(item.name, item.isCanTransition)}
+            onClick={() => updateImage(item.name, item.isCanTransition)}
           >
             {item.name}
           </div>

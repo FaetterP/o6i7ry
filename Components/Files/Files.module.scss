@@ -1,0 +1,18 @@
+.main {
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 95vw;
+}
+
+.path {
+  position: sticky;
+  top: 10px;
+  left: 10px;
+
+  height: 100px; // fot sticky
+  width: 80%;
+}
+
+.filesColumns {
+  display: flex;
+}

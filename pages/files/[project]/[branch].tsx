@@ -1,6 +1,8 @@
 import Files from "Components/Files/Files";
 import { GetServerSidePropsContext } from "next";
+
 import { getFileContent, getFolderContent } from "services/firebase";
+import { getPathPieces } from "utils/httpUtils";
 
 type fileInfo = {
   name: string;
@@ -52,11 +54,16 @@ export async function getServerSideProps(
 
   let [texture16, texture32]: string[] | undefined[] = [undefined, undefined];
   if (imageName) {
-    [texture16, texture32] = await getContent(
-      project,
-      branch,
-      `${path} ${imageName}`
-    );
+    try {
+      texture16 = await getFileContent("OLN", branch, `${path} ${imageName}`);
+    } catch {}
+    try {
+      texture32 = await getFileContent(
+        "OLN",
+        branch + "-orig",
+        `${path} ${imageName}`
+      );
+    } catch {}
   }
 
   const [files, filesOriginal] = solveFiles(
@@ -67,6 +74,7 @@ export async function getServerSideProps(
   return {
     props: JSON.parse(
       JSON.stringify({
+        currentFile: imageName,
         path: pathPieces,
         files,
         filesOriginal,
@@ -75,18 +83,6 @@ export async function getServerSideProps(
       })
     ),
   };
-}
-
-function getPathPieces(queryPath: string | string[] | undefined): string[] {
-  let pathPieces: string[] = [];
-  if (queryPath) {
-    if (Array.isArray(queryPath)) {
-      pathPieces = [...queryPath];
-    } else {
-      pathPieces = [queryPath];
-    }
-  }
-  return pathPieces;
 }
 
 function solveFiles(
@@ -160,13 +156,13 @@ function getType({
   return "undefinedType";
 }
 
-async function getContent(
-  project: string,
-  branch: string,
-  path: string
-): Promise<string[]> {
-  const originalContent = await getFileContent(project, branch, path);
-  const content = await getFileContent(project, `${branch}-orig`, path);
+// async function getContent(
+//   project: string,
+//   branch: string,
+//   path: string
+// ): Promise<string[]> {
+//   const originalContent = await getFileContent(project, branch, path);
+//   const content = await getFileContent(project, `${branch}-orig`, path);
 
-  return [originalContent, content];
-}
+//   return [originalContent, content];
+// }
