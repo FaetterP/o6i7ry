@@ -1,5 +1,5 @@
 .tutorialBlock {
-  color: white;
+  color: var(--secondary-color);
 
   div {
     margin: 10px;
@@ -20,7 +20,8 @@
 }
 
 .title {
-  color: white;
   width: 50%;
   margin: 0 auto;
+
+  color: var(--secondary-color);
 }

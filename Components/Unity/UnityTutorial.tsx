@@ -16,8 +16,7 @@ export default function UnityTutorial(props: PropsType) {
 
       {props.moreContent ? (
         <div className={styles.tutorial}>
-          <hr className={styles.moreLine} />
-          <Tutorial content={props.moreContent} />
+          <Tutorial content={props.content} />
         </div>
       ) : (
         <></>
