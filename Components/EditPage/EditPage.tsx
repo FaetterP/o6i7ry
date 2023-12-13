@@ -61,8 +61,6 @@ export default function EditPage(props: {
         <button type="submit">Save form</button>
         <hr />
       </form>
-
-    <div style={{overflowY: "scroll", maxHeight:"70vh"}}><UnityTutorial {...formik.values} /></div>
     </div>
   );
 }
