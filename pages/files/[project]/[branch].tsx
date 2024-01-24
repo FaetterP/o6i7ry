@@ -45,23 +45,21 @@ export async function getServerSideProps(
   const project = [ctx.query.project].flat()[0] || "OLN";
   const branch = [ctx.query.branch].flat()[0] || "Magic";
 
-  const folderContent = await getFolderContent(project, branch, path);
+  const folderContent = await getFolderContent(project, `${branch}/${path}`);
   const folderContentOriginal = await getFolderContent(
     project,
-    `${branch}-orig`,
-    path
+    `${branch}-orig/${path}`
   );
 
   let [texture16, texture32]: string[] | undefined[] = [undefined, undefined];
   if (imageName) {
     try {
-      texture16 = await getFileContent("OLN", branch, `${path} ${imageName}`);
+      texture16 = await getFileContent("OLN", branch + `/${path}/${imageName}`);
     } catch {}
     try {
       texture32 = await getFileContent(
         "OLN",
-        branch + "-orig",
-        `${path} ${imageName}`
+        branch + "-orig" + `/${path}/${imageName}`
       );
     } catch {}
   }

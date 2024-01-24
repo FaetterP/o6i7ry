@@ -14,16 +14,12 @@ type FirebaseConfig = {
   appId: string;
 };
 
-type FolderInfo = {
-  name: string;
-  content: string[];
-  isFolder: boolean;
-};
-
-type contentItemInfo = { name: string; isFolder: boolean };
+type ContentItemInfo = { name: string; isFolder: boolean };
 let app: FirebaseApp | undefined = undefined;
 
 function connectToFirebase() {
+  if (app) return;
+
   const firebaseConfig = config.get<FirebaseConfig>("firebase.config");
   app = initializeApp(firebaseConfig);
 }
@@ -33,7 +29,7 @@ async function getValue<T>(path: string) {
   const snapshot = await get(child(dbRef, path));
 
   if (!snapshot.exists()) {
-    throw new Error("snapshot does not exist");
+    return undefined
   }
 
   return snapshot.val() as T;
@@ -47,48 +43,49 @@ export async function setValue(path: string, data: any) {
 
 export async function getFolderContent(
   resourcepack: string,
-  branch: string,
   path: string
-): Promise<contentItemInfo[]> {
+): Promise<ContentItemInfo[]> {
   connectToFirebase();
-  path = path.replaceAll("/", " ").replaceAll(".", ",");
-  const value = await getValue<FolderInfo>(
-    `${resourcepack}-assets/${branch}/assets${path ? ` ${path}` : ""}`
+  const pathPieces = path.replaceAll(".", ",").split("/").filter(Boolean);
+  const folderName = pathPieces.pop();
+  const isFolder = await getValue<boolean>(
+    `${resourcepack}-assets${pathPieces.reduce((prev, piece) => `${prev}/${piece}/content`, "")}/${folderName}/isFolder`
   );
-  if (!value.isFolder) {
+  if (!isFolder) {
     throw new HttpError(400, "this is not folder");
   }
 
-  const ret: contentItemInfo[] = [];
-  const promises: Promise<void>[] = [];
+  const keys = await getValue<string[]>(
+    `${resourcepack}-assets${pathPieces.reduce((prev, piece) => `${prev}/${piece}/content`, "")}/${folderName}/keys`
+  );
 
-  value.content.forEach((item) => {
-    const promise = new Promise<void>(async (resolve, reject) => {
+  const promises = keys!.map(key => {
+    return new Promise<ContentItemInfo>(async (res, rej) => {
       const isFolder = await getValue<boolean>(
-        `${resourcepack}-assets/${branch}/assets ${
-          path ? `${path} ` : ``
-        }${item.replaceAll(".", ",")}/isFolder`
+        `${resourcepack}-assets${pathPieces.reduce((prev, piece) => `${prev}/${piece}/content`, "")}/${folderName}/content/${key}/isFolder`
       );
-      ret.push({ name: item, isFolder: isFolder });
-      resolve();
-    });
-    promises.push(promise);
-  });
+      res({
+        name: key.replaceAll(",", "."),
+        isFolder: isFolder!
+      })
+    })
+  })
 
-  await Promise.all(promises);
+  const ret = await Promise.all(promises);
   return ret;
 }
 
 export async function getFileContent(
   resourcepack: string,
-  branch: string,
   path: string
 ) {
-  path = path.replaceAll("/", " ").replaceAll(".", ",");
+  const pathPieces = path.replaceAll(".", ",").split("/");
+  const imageName = pathPieces.pop();
   const content = await getValue<string>(
-    `${resourcepack}-assets/${branch}/assets${path ? ` ${path}` : ""}/content`
+    `${resourcepack}-assets${pathPieces.reduce((prev, piece) => `${prev}/${piece}/content`, "")}/${imageName}`
   );
-  return content;
+
+  return content || "";
 }
 
 export async function getProjects() {
@@ -139,11 +136,11 @@ export async function getOLNTextures(
   let texture32 = "";
 
   try {
-    texture16 = await getFileContent("OLN", branch, path);
-  } catch {}
+    texture16 = await getFileContent("OLN", `${branch}/${path}`);
+  } catch { }
   try {
-    texture32 = await getFileContent("OLN", branch + "-orig", path);
-  } catch {}
+    texture32 = await getFileContent("OLN", `${branch}-orig/${path}`);
+  } catch { }
 
   return [texture16, texture32];
 }
