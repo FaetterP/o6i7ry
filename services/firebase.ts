@@ -91,7 +91,7 @@ export async function getFileContent(
 export async function getProjects() {
   connectToFirebase();
   const projects = await getValue<Project[]>("/projects");
-  return projects;
+  return projects || [];
 }
 
 export async function getUnityTutorial(pageName: string) {
@@ -101,7 +101,7 @@ export async function getUnityTutorial(pageName: string) {
     moreContent: string;
     links: { name: string; link: string }[];
   }>(`/unity/${pageName}`);
-  return page;
+  return page || { content: "NOT FOUND", moreContent: "", links: [] };
 }
 
 export async function saveUnityTutorial(
@@ -124,7 +124,7 @@ export async function getOLN() {
       modsInfo: { name: string; link: string; iconUrl: string }[];
     }[]
   >("OLN/categories");
-  return { categories };
+  return { categories: categories || [] };
 }
 
 export async function getOLNTextures(
