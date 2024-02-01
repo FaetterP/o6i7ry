@@ -20,7 +20,7 @@ export default async function handler(
     if (!req.method || req.method! !== "POST") {
       throw new HttpError(405, "Only POST enabled");
     }
-
+console.log({body, mods:body.mods})
     if (!body.mods || !Array.isArray(body.mods) || body.mods.length === 0) {
       throw new HttpError(400, "Empty mods array");
     }
