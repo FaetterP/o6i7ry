@@ -80,12 +80,23 @@ export async function getFileContent(
   path: string
 ) {
   const pathPieces = path.replaceAll(".", ",").split("/");
-  const imageName = pathPieces.pop();
+  const fileName = pathPieces.pop();
   const content = await getValue<string>(
-    `${resourcepack}-assets${pathPieces.reduce((prev, piece) => `${prev}/${piece}/content`, "")}/${imageName}`
+    `${resourcepack}-assets${pathPieces.reduce((prev, piece) => `${prev}/${piece}/content`, "")}/${fileName}`
   );
 
   return content || "";
+}
+
+export async function getLang(resourcepack: string, path: string) {
+  const pathPieces = path.split("/")
+  const branch = pathPieces.shift()
+  path = pathPieces.reduce((a, b) => `${a}/${b}`)
+
+  const en = getFileContent(resourcepack, `${branch}/${path}/en_US.lang`);
+  const ru = getFileContent(resourcepack, `${branch}-orig/${path}/ru_RU.lang`);
+
+  return [en, ru];
 }
 
 export async function getProjects() {
@@ -114,6 +125,28 @@ export async function saveUnityTutorial(
 ) {
   connectToFirebase();
   await setValue(`/unity/${pageName}`, data);
+}
+
+export async function getModsGuide(pageName: string) {
+  connectToFirebase();
+  const page = await getValue<{
+    content: string;
+    moreContent: string;
+    links: { name: string; link: string }[];
+  }>(`/mods-guide/${pageName}`);
+  return page || { content: "NOT FOUND", moreContent: "", links: [] };
+}
+
+export async function saveModsGuide(
+  pageName: string,
+  data: {
+    content: string;
+    moreContent: string;
+    links: { name: string; link: string }[];
+  }
+) {
+  connectToFirebase();
+  await setValue(`/mods-guide/${pageName}`, data);
 }
 
 export async function getOLN() {

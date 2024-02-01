@@ -19,8 +19,8 @@ type PropsType = {
   texture16?: string;
   texture32?: string;
 
-  langEN?: string;
-  langRU?: string;
+  langEN?: string[];
+  langRU?: string[];
 };
 
 export default function FilesProject(props: PropsType) {
@@ -39,6 +39,10 @@ export async function getServerSideProps(
   if (pathPieces.length > 0 && pathPieces.at(-1)!.endsWith(".png")) {
     imageName = pathPieces.pop()!;
   }
+  let langName = "";
+  if (pathPieces.length > 0 && pathPieces.at(-1)!.endsWith(".lang")) {
+    langName = pathPieces.pop()!;
+  }
   const path: string =
     pathPieces.length === 0 ? "" : pathPieces.reduce((a, b) => `${a}/${b}`);
 
@@ -53,15 +57,18 @@ export async function getServerSideProps(
 
   let [texture16, texture32]: string[] | undefined[] = [undefined, undefined];
   if (imageName) {
-    try {
-      texture16 = await getFileContent("OLN", branch + `/${path}/${imageName}`);
-    } catch {}
-    try {
-      texture32 = await getFileContent(
-        "OLN",
-        branch + "-orig" + `/${path}/${imageName}`
-      );
-    } catch {}
+    texture16 = await getFileContent("OLN", `${branch}/${path}/${imageName}`);
+    texture32 = await getFileContent(
+      "OLN",
+      `${branch}-orig/${path}/${imageName}`
+    );
+  }
+  if (langName) {
+    texture16 = await getFileContent("OLN", `${branch}/${path}/${imageName}`);
+    texture32 = await getFileContent(
+      "OLN",
+      `${branch}-orig/${path}/${imageName}`
+    );
   }
 
   const [files, filesOriginal] = solveFiles(

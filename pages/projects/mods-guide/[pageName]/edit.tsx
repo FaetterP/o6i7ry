@@ -11,7 +11,7 @@ export default function EditUnityTutorialPage(
       {...props}
       page={props.pageName as string}
       host={props.host}
-      endpoint="/api/firebase/saveUnity"
+      endpoint="/api/firebase/saveModsGuide"
     />
   );
 }

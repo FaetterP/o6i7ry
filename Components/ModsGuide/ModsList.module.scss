@@ -1,0 +1,22 @@
+.list {
+  color: var(--secondary-color);
+
+  padding: auto 30px;
+
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+
+  div.item {
+    display: flex;
+
+    * {
+      font-size: 20px;
+    }
+  }
+
+  div.item:hover {
+    color: darkgrey;
+    cursor: pointer;
+  }
+}

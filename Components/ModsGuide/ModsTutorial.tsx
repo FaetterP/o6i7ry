@@ -1,5 +1,5 @@
 import Tutorial from "Components/Tutorial/Tutorial";
-import styles from "./UnityTutorial.module.scss";
+import styles from "./ModsTutorial.module.scss";
 
 type PropsType = {
   content: string;
@@ -7,7 +7,7 @@ type PropsType = {
   links: { name: string; link: string }[];
 };
 
-export default function UnityTutorial(props: PropsType) {
+export default function ModsTutorial(props: PropsType) {
   return (
     <div className="wrapper">
       <div className={styles.tutorial}>

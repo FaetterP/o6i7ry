@@ -19,8 +19,8 @@ type PropsType = {
   texture16?: string;
   texture32?: string;
 
-  langEN?: string;
-  langRU?: string;
+  langEN?: string[];
+  langRU?: string[];
 };
 
 export default function Files(props: PropsType) {

@@ -1,7 +1,6 @@
 import { useFormik } from "formik";
 import EditLinks from "./EditLinks";
 import EditContent from "./EditContent";
-import UnityTutorial from "Components/Unity/UnityTutorial";
 import axios from "axios";
 
 export default function EditPage(props: {
@@ -13,9 +12,10 @@ export default function EditPage(props: {
   }[];
 
   host: string;
+  endpoint: string;
   page: string;
 }) {
-  const { page, host, ...contentFromProps } = props;
+  const { page, host, endpoint, ...contentFromProps } = props;
   const formik = useFormik({
     initialValues: {
       links: [],
@@ -23,7 +23,7 @@ export default function EditPage(props: {
       ...contentFromProps,
     },
     onSubmit: (values) => {
-      axios.patch(`${host}/api/firebase/saveUnity`, { page, data: values });
+      axios.patch(`${host}${endpoint}`, { page, data: values });
     },
   });
 
@@ -35,7 +35,7 @@ export default function EditPage(props: {
   }
 
   return (
-    <div >
+    <div>
       <form onSubmit={formik.handleSubmit}>
         <div>
           <EditContent
