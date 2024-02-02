@@ -47,27 +47,23 @@ export async function getServerSideProps(
     pathPieces.length === 0 ? "" : pathPieces.reduce((a, b) => `${a}/${b}`);
 
   const project = [ctx.query.project].flat()[0] || "OLN";
-  const branch = [ctx.query.branch].flat()[0] || "Magic";
 
-  const folderContent = await getFolderContent(project, `${branch}/${path}`);
+  const folderContent = await getFolderContent(project, `better/${path}`);
   const folderContentOriginal = await getFolderContent(
     project,
-    `${branch}-orig/${path}`
+    `original/${path}`
   );
 
   let [texture16, texture32]: string[] | undefined[] = [undefined, undefined];
   if (imageName) {
-    texture16 = await getFileContent("OLN", `${branch}/${path}/${imageName}`);
-    texture32 = await getFileContent(
-      "OLN",
-      `${branch}-orig/${path}/${imageName}`
-    );
+    texture16 = await getFileContent("OLN", `better/${path}/${imageName}`);
+    texture32 = await getFileContent("OLN", `original/${path}/${imageName}`);
   }
   if (langName) {
-    texture16 = await getFileContent("OLN", `${branch}/${path}/${imageName}`);
+    texture16 = await getFileContent("OLN", `better/${path}/${langName}`);
     texture32 = await getFileContent(
       "OLN",
-      `${branch}-orig/${path}/${imageName}`
+      `original/${path}/${langName}`
     );
   }
 
@@ -161,13 +157,3 @@ function getType({
   return "undefinedType";
 }
 
-// async function getContent(
-//   project: string,
-//   branch: string,
-//   path: string
-// ): Promise<string[]> {
-//   const originalContent = await getFileContent(project, branch, path);
-//   const content = await getFileContent(project, `${branch}-orig`, path);
-
-//   return [originalContent, content];
-// }

@@ -4,7 +4,6 @@ import { CommonApiResponse } from "types/api";
 import { errorResponse, getPathPieces, successResponse } from "utils/httpUtils";
 
 type QueryType = {
-  branch: string;
   path?: string | string[];
   "path[]"?: string | string[];
 };
@@ -25,7 +24,7 @@ export default async function handler(
     const path: string =
       pathPieces.length === 0 ? "" : pathPieces.reduce((a, b) => `${a}/${b}`);
 
-    const ret = await getOLNTextures(query.branch, path);
+    const ret = await getOLNTextures(path);
 
     successResponse(req, res, ret);
   } catch (err) {

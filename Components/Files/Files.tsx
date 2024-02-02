@@ -1,5 +1,4 @@
 import ImageComparison from "Components/General/ImageComparison/ImageComparison";
-import ChooseBranch from "./ChooseBranch";
 import FilesDisplay from "./FilesDisplay";
 import PathDisplay from "./PathDisplay";
 import styles from "./Files.module.scss";
@@ -42,7 +41,6 @@ export default function Files(props: PropsType) {
       <div>
         <div className={styles.main}>
           <div className={styles.path}>
-            <ChooseBranch />
             <PathDisplay pathPieces={props.path} />
             <ImageComparison
               imageBase64={texture32!}

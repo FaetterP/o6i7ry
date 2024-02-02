@@ -90,11 +90,10 @@ export async function getFileContent(
 
 export async function getLang(resourcepack: string, path: string) {
   const pathPieces = path.split("/")
-  const branch = pathPieces.shift()
   path = pathPieces.reduce((a, b) => `${a}/${b}`)
 
-  const en = getFileContent(resourcepack, `${branch}/${path}/en_US.lang`);
-  const ru = getFileContent(resourcepack, `${branch}-orig/${path}/ru_RU.lang`);
+  const en = getFileContent(resourcepack, `better/${path}/en_US.lang`);
+  const ru = getFileContent(resourcepack, `original/${path}/ru_RU.lang`);
 
   return [en, ru];
 }
@@ -161,7 +160,6 @@ export async function getOLN() {
 }
 
 export async function getOLNTextures(
-  branch: string,
   path: string
 ): Promise<[texture16: string, texture32: string]> {
   connectToFirebase();
@@ -169,10 +167,10 @@ export async function getOLNTextures(
   let texture32 = "";
 
   try {
-    texture16 = await getFileContent("OLN", `${branch}/${path}`);
+    texture16 = await getFileContent("OLN", `better/${path}`);
   } catch { }
   try {
-    texture32 = await getFileContent("OLN", `${branch}-orig/${path}`);
+    texture32 = await getFileContent("OLN", `original/${path}`);
   } catch { }
 
   return [texture16, texture32];
