@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "./Builder.module.scss";
 
 type PropsType = {
   nameDisplay: string;
@@ -32,11 +33,12 @@ export default function ModBlock(props: PropsType) {
 
   return (
     <>
-      <div>
+      <div
+        className={`${styles.modBlock} ${isEnabled ? styles.enabled : ""}`}
+        onClick={Click}
+      >
         <img src={props.iconUrl} />
-        <span style={isEnabled ? { color: "red", cursor:"pointer" } : { color: "white", cursor:"pointer" }} onClick={Click}>
-          {props.nameDisplay}
-        </span>
+        <span>{props.nameDisplay}</span>
       </div>
     </>
   );

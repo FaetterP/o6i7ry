@@ -1,0 +1,78 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 35px;
+  justify-content: normal;
+
+  @media (max-width: 1180px) {
+    justify-content: center;
+  }
+}
+
+.modBlock {
+  cursor: pointer;
+  color: white;
+
+  background: var(--card-color);
+  width: 150px;
+  height: 180px;
+  transition: all 0.4s ease;
+  border-radius: 9px;
+
+  span {
+    margin: 10px 7px 10px 7px;
+
+    // color: var(--secondary-color);
+    font-family: Montserrat;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  img {
+    transition: all 0.4s ease;
+
+    width: 150px;
+    height: 150px;
+    border-radius: 9px 9px 0px 0px;
+    background: var(--top-card-color);
+    image-rendering: pixelated;
+  }
+
+  &.enabled {
+    color: red;
+
+    img {
+      background: var(--accent-color);
+    }
+  }
+}
+
+.downloadButton {
+  border: none;
+  padding: 11px 48px;
+  background-color: var(--card-color);
+  border-radius: 8px;
+  color: var(--buttonText-color);
+  font-family: Montserrat;
+  font-size: 32px;
+  font-weight: 800;
+  margin-top: 88px;
+  touch-action: manipulation;
+  transition: all 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    background-color: var(--buttonHover-color);
+  }
+  &:hover {
+    background-color: var(--buttonHover-color);
+  }
+}
