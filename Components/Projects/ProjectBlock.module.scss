@@ -1,21 +1,21 @@
 .cardHolder {
   background: var(--card-color);
-  width: 208px;
+  width: 200px;
   height: 230px;
   transition: all 0.4s ease;
   border-radius: 9px;
   
   img {
-    width: 208px;
-    height: 194px;
+    width: 200px;
+    height: 200px;
     border-radius: 9px 9px 0px 0px;
   }
 }
 
 .imageContainer {
   border-radius: 9px 9px 0px 0px;
-  width: 208px;
-  height: 194px;
+  width: 200px;
+  height: 200px;
   transition: all 0.4s ease;
   background: var(--top-card-color);
 }

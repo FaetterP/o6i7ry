@@ -2,7 +2,6 @@ import { FirebaseApp, initializeApp } from "firebase/app";
 import { getDatabase, ref, get, child, set } from "firebase/database";
 import config from "config";
 import { HttpError } from "utils/HttpError";
-import { Project } from "types/general";
 
 type FirebaseConfig = {
   apiKey: string;
@@ -96,12 +95,6 @@ export async function getLang(resourcepack: string, path: string) {
   const ru = getFileContent(resourcepack, `original/${path}/ru_RU.lang`);
 
   return [en, ru];
-}
-
-export async function getProjects() {
-  connectToFirebase();
-  const projects = await getValue<Project[]>("/projects");
-  return projects || [];
 }
 
 export async function getUnityTutorial(pageName: string) {

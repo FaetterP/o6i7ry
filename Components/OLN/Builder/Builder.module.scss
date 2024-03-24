@@ -2,11 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 35px;
-  justify-content: normal;
-
-  @media (max-width: 1180px) {
-    justify-content: center;
-  }
+  justify-content: center;
 }
 
 .modBlock {
