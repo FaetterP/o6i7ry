@@ -127,6 +127,8 @@ export default function OLNBuilder() {
       <div className={styles.list}>
       {modsBlocks.map((info) => (
         <ModBlock
+          key={info.modFolder}
+          
           nameDisplay={info.nameDisplay}
           iconUrl={info.iconUrl}
           modFolder={info.modFolder}
