@@ -10,7 +10,7 @@ type PropsType = {
   removeMod: (name: string) => void;
 };
 
-export default function ModBlock(props: PropsType) {
+export default function ModCard(props: PropsType) {
   const [isEnabled, setIsEnabled] = useState(false);
 
   function Activate() {
@@ -32,14 +32,16 @@ export default function ModBlock(props: PropsType) {
   }
 
   return (
-    <>
-      <div
-        className={`${styles.modBlock} ${isEnabled ? styles.enabled : ""}`}
-        onClick={Click}
-      >
+    <article
+      className={`${styles.modBlock} ${isEnabled ? styles.enabled : ""}`}
+      onClick={Click}
+    >
+      <figure>
         <img src={props.iconUrl} />
-        <span>{props.nameDisplay}</span>
-      </div>
-    </>
+        <figcaption>
+          <span>{props.nameDisplay}</span>
+        </figcaption>
+      </figure>
+    </article>
   );
 }

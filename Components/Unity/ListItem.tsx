@@ -9,9 +9,11 @@ type PropsType = {
 
 export default function ListItem({ icon, title, link }: PropsType) {
   return (
-    <div className={styles.item}>
-      <span className="material-icons">{icon}</span>
-      <Link href={`/projects/unity/${link}`}>{title}</Link>
-    </div>
+    <article className={styles.item}>
+      <Link href={`/projects/unity/${link}`}>
+        <span className="material-icons">{icon}</span>
+        <h3>{title}</h3>
+      </Link>
+    </article>
   );
 }

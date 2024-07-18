@@ -5,11 +5,7 @@ import { getOLN } from "services/firebase";
 export default function OLNPage(
   props: Awaited<ReturnType<typeof getServerSideProps>>["props"]
 ) {
-  return (
-    <>
-      <OLN categories={props.categories} />
-    </>
-  );
+  return <OLN categories={props.categories} />;
 }
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {

@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import styles from "./SwitchLight.module.scss";
-import { ASPIDBLUE_THEME_NAME, DARK_THEME_NAME, LIGHT_THEME_NAME } from "utils/constants";
+import {
+  ASPIDBLUE_THEME_NAME,
+  DARK_THEME_NAME,
+  LIGHT_THEME_NAME,
+} from "utils/constants";
 
 export default function SwitchLight() {
   const { theme, setTheme } = useTheme();
@@ -29,10 +33,10 @@ export default function SwitchLight() {
   };
 
   return (
-    <ul className={styles.switchLight}>
-      <button className="material-symbols-outlined" onClick={toggleTheme}>
+    <button className={styles.switchLight} onClick={toggleTheme}>
+      <span className="material-symbols-outlined">
         {theme === DARK_THEME_NAME ? "dark_mode" : "light_mode"}
-      </button>
-    </ul>
+      </span>
+    </button>
   );
 }

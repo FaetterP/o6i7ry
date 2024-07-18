@@ -4,10 +4,9 @@ export default function Landing() {
   return (
       <div className="wrapper">
         <div className={styles.parentContainer}>
-          <div className={styles.landing}>
-            <div>
+          <section className={styles.landing}>
               <h1>Welcome to the club buddy</h1>
-              <h2>
+              <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -15,9 +14,8 @@ export default function Landing() {
                 in reprehenderit in voluptate velit esse cillum dolore eu fugiat
                 nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                 sunt in culpa qui officia deserunt mollit anim id est laborum
-              </h2>
-            </div>
-          </div>
+              </p>
+          </section>
         </div>
       </div>
   );

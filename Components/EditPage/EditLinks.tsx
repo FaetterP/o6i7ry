@@ -17,9 +17,10 @@ export default function EditLinks({ links, formik }: PropsType) {
   }
 
   return (
-    <div>
+    <section>
+      <h2>Ссылки:</h2>
       {links.map((item, index) => (
-        <div key={`${index}-${item.link}`}>
+        <article key={`${index}-${item.link}`}>
           <input
             name={`links.${index}.name`}
             onChange={formik.handleChange}
@@ -35,10 +36,10 @@ export default function EditLinks({ links, formik }: PropsType) {
               removeLink(index);
             }}
           >
-            remove link
+            Удалить ссылку
           </button>
-        </div>
+        </article>
       ))}
-    </div>
+    </section>
   );
 }

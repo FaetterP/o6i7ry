@@ -1,7 +1,7 @@
 .pathBlock {
   width: 100%;
 
-  h1 {
+  li {
     margin: 10px;
     padding: 10px;
 
@@ -14,9 +14,11 @@
     line-height: 15px;
 
     color: var(--secondary-color);
+
+    list-style-type: none;
   }
 
-  h1:hover {
+  li:hover {
     background-color: var(--buttonHover-color);
   }
 }

@@ -35,32 +35,29 @@ export default function EditPage(props: {
   }
 
   return (
-    <div>
-      <form onSubmit={formik.handleSubmit}>
-        <div>
-          <EditContent
-            name="content"
-            content={formik.values.content}
-            formik={formik}
-          />
-        </div>
-        <hr />
-        <div>
-          <EditContent
-            name="moreContent"
-            content={formik.values.moreContent}
-            formik={formik}
-          />
-        </div>
-        <hr />
-        <div>
-          <EditLinks links={formik.values.links} formik={formik} />
-          <button onClick={addLink}>add link</button>
-        </div>
+    <form onSubmit={formik.handleSubmit}>
+      <section>
+        <EditContent
+          name="content"
+          content={formik.values.content}
+          formik={formik}
+        />
+      </section>
+      <hr />
+      <section>
+        <EditContent
+          name="moreContent"
+          content={formik.values.moreContent}
+          formik={formik}
+        />
+      </section>
+      <hr />
+      <section>
+        <EditLinks links={formik.values.links} formik={formik} />
+        <button onClick={addLink}>Добавить ссылку</button>
+      </section>
 
-        <button type="submit">Save form</button>
-        <hr />
-      </form>
-    </div>
+      <button type="submit">Save form</button>
+    </form>
   );
 }

@@ -11,14 +11,12 @@ const MDEditor = dynamic(() => import("@uiw/react-md-editor"), { ssr: false });
 
 export default function EditContent({ name, content, formik }: PropsType) {
   return (
-    <div>
-      <MDEditor
-        value={content}
-        onChange={(value) => {
-          console.log({ name, value }), formik.setFieldValue(name, value);
-        }}
-        preview="edit"
-      />
-    </div>
+    <MDEditor
+      value={content}
+      onChange={(value) => {
+        console.log({ name, value }), formik.setFieldValue(name, value);
+      }}
+      preview="edit"
+    />
   );
 }

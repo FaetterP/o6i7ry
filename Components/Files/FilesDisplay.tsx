@@ -5,6 +5,7 @@ import axios from "axios";
 import { useState } from "react";
 
 type PropsType = {
+  columnName: string;
   currentFile?: string;
   files: { name: string; type: string; isCanTransition: boolean }[];
 
@@ -52,10 +53,11 @@ export default function FilesDisplay(props: PropsType) {
   }
 
   return (
-    <>
-      <div className={styles.filesBlock}>
+    <section className={styles.filesBlock}>
+      <h2>{props.columnName}</h2>
+      <ul>
         {props.files.map((item) => (
-          <div
+          <li
             className={`${styles[item.type]} ${
               currentFile.endsWith(".png") && currentFile === item.name
                 ? styles.selected
@@ -64,10 +66,10 @@ export default function FilesDisplay(props: PropsType) {
             key={getKey(item.name)}
             onClick={() => updateImage(item.name, item.isCanTransition)}
           >
-            {item.name}
-          </div>
+            <span>{item.name}</span>
+          </li>
         ))}
-      </div>
-    </>
+      </ul>
+    </section>
   );
 }

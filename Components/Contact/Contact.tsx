@@ -39,13 +39,13 @@ export default function Contact() {
 
   return (
     <div className="wrapper">
-      <div className={styles.parentContainer}>
+      <section className={styles.parentContainer}>
         <div className={styles.textContainer}>
           <h1>Get in touch</h1>
-          <h2>
+          <p>
             Do you fancy saying hi to me or you want bug report and you need my
             help? Feel free to contact me
-          </h2>
+          </p>
         </div>
         <form onSubmit={formik.handleSubmit}>
           <div className={styles.inputContainer}>
@@ -111,7 +111,7 @@ export default function Contact() {
             </button>
           </div>
         </form>
-      </div>
+      </section>
     </div>
   );
 }

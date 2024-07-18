@@ -10,22 +10,22 @@ type PropsType = {
 export default function UnityTutorial(props: PropsType) {
   return (
     <div className="wrapper">
-      <div className={styles.tutorial}>
+      <section className={styles.tutorial}>
         <Tutorial content={props.content} />
-      </div>
+      </section>
 
       {props.moreContent ? (
-        <div className={styles.tutorial}>
+        <section className={styles.tutorial}>
           <hr className={styles.moreLine}/>
           <Tutorial content={props.moreContent} />
-        </div>
+        </section>
       ) : (
         <></>
       )}
       {props.links ? (
-        <div className={styles.links}>
+        <section className={styles.links}>
           <hr className={styles.linksLine} />
-          <h1>Ссылки</h1>
+          <h2>Ссылки</h2>
           <ul>
             {props.links.map((item) => (
               <li key={item.link}>
@@ -37,7 +37,7 @@ export default function UnityTutorial(props: PropsType) {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       ) : (
         <></>
       )}

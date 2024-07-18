@@ -16,15 +16,13 @@ export default function PathDisplay({ pathPieces }: PropsType) {
   }
 
   return (
-    <>
-      <div className={styles.pathBlock}>
-        <h1 onClick={() => goToPath(-1)}>{"/"}</h1>
-        {pathPieces.map((item, index) => (
-          <h1 key={item} onClick={() => goToPath(index)}>
-            {item}
-          </h1>
-        ))}
-      </div>
-    </>
+    <ol className={styles.pathBlock}>
+      <li onClick={() => goToPath(-1)}>{"/"}</li>
+      {pathPieces.map((item, index) => (
+        <li key={item} onClick={() => goToPath(index)}>
+          {item}
+        </li>
+      ))}
+    </ol>
   );
 }

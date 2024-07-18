@@ -37,39 +37,37 @@ export default function Files(props: PropsType) {
   }
 
   return (
-    <>
-      <div>
-        <div className={styles.main}>
-          <div className={styles.path}>
-            <PathDisplay pathPieces={props.path} />
-            <ImageComparison
-              imageBase64={texture32!}
-              imageOriginalBase64={texture16!}
-            />
-          </div>
+    <div className={styles.main}>
+      <section className={styles.path}>
+        <PathDisplay pathPieces={props.path} />
+        <ImageComparison
+          imageBase64={texture32!}
+          imageOriginalBase64={texture16!}
+        />
+      </section>
 
-          <div className={styles.filesColumns}>
-            <FilesDisplay
-              updateImage={
-                props.currentFile && props.currentFile.endsWith(".png")
-                  ? updateImage
-                  : undefined
-              }
-              files={props.files!}
-              currentFile={props.currentFile}
-            />
-            <FilesDisplay
-              updateImage={
-                props.currentFile && props.currentFile.endsWith(".png")
-                  ? updateImage
-                  : undefined
-              }
-              files={props.filesOriginal!}
-              currentFile={props.currentFile}
-            />
-          </div>
-        </div>
-      </div>
-    </>
+      <section className={styles.filesColumns}>
+      <FilesDisplay
+          columnName="16px"
+          updateImage={
+            props.currentFile && props.currentFile.endsWith(".png")
+              ? updateImage
+              : undefined
+          }
+          files={props.filesOriginal!}
+          currentFile={props.currentFile}
+        />
+        <FilesDisplay
+          columnName="32px"
+          updateImage={
+            props.currentFile && props.currentFile.endsWith(".png")
+              ? updateImage
+              : undefined
+          }
+          files={props.files!}
+          currentFile={props.currentFile}
+        />
+      </section>
+    </div>
   );
 }

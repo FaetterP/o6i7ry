@@ -32,7 +32,7 @@ export default function About() {
       <div className={styles.parentContainer}>
         <div className={styles.textContainer}>
           <h1>Hello!</h1>
-          <h2>
+          <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
             ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -40,11 +40,11 @@ export default function About() {
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum
-          </h2>
+          </p>
         </div>
-        <div className={styles.imageContainer}>
-          {imageSrc ? <Image src={imageSrc} alt="Stone" fill/> : <></>}
-        </div>
+        <figure className={styles.imageContainer}>
+          {imageSrc ? <Image src={imageSrc} alt="Stone" fill /> : <></>}
+        </figure>
       </div>
     </div>
   );

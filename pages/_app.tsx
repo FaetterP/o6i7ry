@@ -9,12 +9,16 @@ import { ASPIDBLUE_THEME_NAME, DARK_THEME_NAME } from "utils/constants";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
-      <ThemeProvider disableTransitionOnChange themes={[ASPIDBLUE_THEME_NAME]} defaultTheme={DARK_THEME_NAME}>
+      <ThemeProvider
+        disableTransitionOnChange
+        themes={[ASPIDBLUE_THEME_NAME]}
+        defaultTheme={DARK_THEME_NAME}
+      >
         <SessionProvider>
           <Header />
-          <div className="middle">
+          <main className="middle">
             <Component {...pageProps} />
-          </div>
+          </main>
           <Footer />
         </SessionProvider>
       </ThemeProvider>

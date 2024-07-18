@@ -7,7 +7,7 @@
   gap: 20px;
   grid-template-columns: repeat(3, 1fr);
 
-  div.item {
+  article.item > a{
     display: flex;
 
     * {
@@ -15,8 +15,8 @@
     }
   }
 
-  div.item:hover {
+  article.item:hover {
     color: darkgrey;
-    cursor: pointer;
+    cursor:not-allowed;
   }
 }

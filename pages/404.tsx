@@ -7,16 +7,18 @@ export default function Page404() {
     <>
       <div className="wrapper">
         <div className={styles.parentContainer}>
-          <Image
-            src={errorImage}
-            alt="404 page not found"
-            width={223}
-            height={184}
-          />
-          <div className={styles.textContainer}>
+          <figure>
+            <Image
+              src={errorImage}
+              alt="404 page not found"
+              width="223"
+              height="184"
+            />
+          </figure>
+          <section className={styles.textContainer}>
             <h1>404</h1>
             <h2>Page not found</h2>
-          </div>
+          </section>
         </div>
       </div>
     </>

@@ -9,19 +9,17 @@ type PropsType = {
 
 export default function ProjectPreview(props: PropsType) {
   return (
-    <>
-      <div className={styles.cardHolder}>
-        <div className={styles.imageContainer}>
-          <Image src={props.src} alt={props.title} width={180} height={180} />
-        </div>
-        <div className={styles.textContainer}>
-          <h2 title={props.title}>{props.title}</h2>
-          <h1>
-            {"// "}
-            {props.type}
-          </h1>
-        </div>
+    <figure className={styles.cardHolder}>
+      <div className={styles.imageContainer}>
+        <img src={props.src} alt={props.title} width={180} height={180} />
       </div>
-    </>
+      <figcaption className={styles.textContainer}>
+        <h2 title={props.title}>{props.title}</h2>
+        <span>
+          {"// "}
+          {props.type}
+        </span>
+      </figcaption>
+    </figure>
   );
 }

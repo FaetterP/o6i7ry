@@ -25,13 +25,13 @@ export default function Login() {
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
-        <span>enter password</span>
+        <span>Enter password</span>
         <input
           name="password"
           onChange={formik.handleChange}
           value={formik.values.password}
         />
-        <button type="submit">login</button>
+        <button type="submit">Sign in</button>
       </form>
     </>
   );

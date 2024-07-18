@@ -7,8 +7,18 @@
   border-radius: 4px;
   text-align: center;
 
-  div:hover {
+  h2 {
+    color: var(--secondary-color);
+    padding-bottom: 8px;
+  }
+
+  li {
+    list-style-type: none;
+  }
+
+  li:hover {
     background-color: var(--buttonHover-color);
+    cursor: pointer;
   }
 }
 
@@ -32,6 +42,6 @@
   color: brown;
 }
 
-.selected{
+.selected {
   background-color: var(--accent-color);
 }
