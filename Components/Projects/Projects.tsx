@@ -30,13 +30,13 @@ export default function Projects() {
       urlName: "skyfyre",
     },
     {
-      icon: "https://svgshare.com/i/v8o.svg",
+      icon: "https://svgshare.com/i/18Wv.svg",
       name: "OsuEditor Android",
       type: "Unity",
       urlName: "osu-editor",
     },
     {
-      icon: "https://svgshare.com/i/vEk.svg",
+      icon: "https://svgshare.com/i/18Wb.svg",
       name: "Unity tutorial",
       type: "Tutorial",
       urlName: "unity",
