@@ -103,18 +103,7 @@ export default function LilysWell() {
       <main className={styles.mainContainer}>
         <div className={styles.contentBox}>
           <div className={styles.borderGradient} />
-
-          <div className={styles.cornerDecoration} data-position="top-left" />
-          <div className={styles.cornerDecoration} data-position="top-right" />
-          <div
-            className={styles.cornerDecoration}
-            data-position="bottom-left"
-          />
-          <div
-            className={styles.cornerDecoration}
-            data-position="bottom-right"
-          />
-
+          
           <header className={styles.titleSection}>
             <h1 className={styles.title}>
               Русификатор для{" "}
@@ -156,10 +145,6 @@ export default function LilysWell() {
               ))}
             </div>
           </section>
-
-          <footer className={styles.footerInfo}>
-            Нашли ошибку? Напишите на GitHub Issues или faettterp@gmail.com
-          </footer>
         </div>
       </main>
 

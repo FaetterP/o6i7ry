@@ -1,4 +1,4 @@
-import Disillusion from "Components/Disillusion";
+import Disillusion from "Components/Projects/Disillusion";
 
 export default function LilysWellPage() {
   return <Disillusion />;

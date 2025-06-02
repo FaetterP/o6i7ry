@@ -1,4 +1,4 @@
-import LilysWell from "Components/LilysWell";
+import LilysWell from "Components/Projects/LilysWell";
 
 export default function LilysWellPage() {
   return <LilysWell />;
