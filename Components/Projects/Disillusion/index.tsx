@@ -83,7 +83,7 @@ export default function Disillusion() {
           </div>
         </div>
       </div>
-      <div className={styles.credits}>Made by FaetterP</div>
+      <div className={styles.credits}>Made by FaetterP & SNAFADRON</div>
     </div>
   );
 }

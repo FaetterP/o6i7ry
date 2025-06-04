@@ -23,6 +23,12 @@ export default function Projects() {
       type: "Rus",
       urlName: "disillusion",
     },
+        {
+      icon: "https://i.ibb.co/bndg2Bc/Disillusion-ST.png",
+      name: "Disillusion ST Русификатор",
+      type: "Rus",
+      urlName: "disillusion-st",
+    },
     {
       icon: "https://i.ibb.co/SvQ0y4N/SkyFyre.jpg",
       name: "SkyFyre",

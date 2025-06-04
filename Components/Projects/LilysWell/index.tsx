@@ -4,10 +4,10 @@ import styles from "./LilysWell.module.scss";
 export default function LilysWell() {
   const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [modalImageSrc, setModalImageSrc] = useState<string>("");
-  const [mounted, setMounted] = useState<boolean>(false);
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   useEffect(() => {
-    setMounted(true);
+    setIsLoaded(true);
   }, []);
 
   const openModal = (src: string): void => {
@@ -21,7 +21,7 @@ export default function LilysWell() {
   };
 
   useEffect(() => {
-    if (!mounted) return;
+    if (!isLoaded) return;
 
     const handleKeyDown = (event: KeyboardEvent): void => {
       if (event.key === "Escape") {
@@ -40,9 +40,9 @@ export default function LilysWell() {
       document.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "auto";
     };
-  }, [modalOpen, mounted]);
+  }, [modalOpen, isLoaded]);
 
-  if (!mounted) {
+  if (!isLoaded) {
     return <div className={styles.loading}>Loading Lily's Well Page...</div>;
   }
 
